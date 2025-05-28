@@ -1,0 +1,173 @@
+{
+    "timestamp": "2025-04-11 16:40:08",
+    "categories": [
+        {
+            "name": "General Knowledge",
+            "id": 9,
+            "easy_num": 152,
+            "med_num": 135,
+            "hard_num": 62
+        },
+        {
+            "name": "Entertainment: Books",
+            "id": 10,
+            "easy_num": 34,
+            "med_num": 46,
+            "hard_num": 28
+        },
+        {
+            "name": "Entertainment: Film",
+            "id": 11,
+            "easy_num": 96,
+            "med_num": 128,
+            "hard_num": 49
+        },
+        {
+            "name": "Entertainment: Music",
+            "id": 12,
+            "easy_num": 115,
+            "med_num": 211,
+            "hard_num": 78
+        },
+        {
+            "name": "Entertainment: Musicals & Theatres",
+            "id": 13,
+            "easy_num": 10,
+            "med_num": 14,
+            "hard_num": 11
+        },
+        {
+            "name": "Entertainment: Television",
+            "id": 14,
+            "easy_num": 72,
+            "med_num": 85,
+            "hard_num": 30
+        },
+        {
+            "name": "Entertainment: Video Games",
+            "id": 15,
+            "easy_num": 362,
+            "med_num": 495,
+            "hard_num": 211
+        },
+        {
+            "name": "Entertainment: Board Games",
+            "id": 16,
+            "easy_num": 24,
+            "med_num": 21,
+            "hard_num": 25
+        },
+        {
+            "name": "Science & Nature",
+            "id": 17,
+            "easy_num": 67,
+            "med_num": 110,
+            "hard_num": 73
+        },
+        {
+            "name": "Science: Computers",
+            "id": 18,
+            "easy_num": 54,
+            "med_num": 76,
+            "hard_num": 39
+        },
+        {
+            "name": "Science: Mathematics",
+            "id": 19,
+            "easy_num": 16,
+            "med_num": 26,
+            "hard_num": 18
+        },
+        {
+            "name": "Mythology",
+            "id": 20,
+            "easy_num": 22,
+            "med_num": 29,
+            "hard_num": 14
+        },
+        {
+            "name": "Sports",
+            "id": 21,
+            "easy_num": 53,
+            "med_num": 68,
+            "hard_num": 24
+        },
+        {
+            "name": "Geography",
+            "id": 22,
+            "easy_num": 82,
+            "med_num": 143,
+            "hard_num": 56
+        },
+        {
+            "name": "History",
+            "id": 23,
+            "easy_num": 78,
+            "med_num": 176,
+            "hard_num": 85
+        },
+        {
+            "name": "Politics",
+            "id": 24,
+            "easy_num": 19,
+            "med_num": 29,
+            "hard_num": 16
+        },
+        {
+            "name": "Art",
+            "id": 25,
+            "easy_num": 17,
+            "med_num": 13,
+            "hard_num": 11
+        },
+        {
+            "name": "Celebrities",
+            "id": 26,
+            "easy_num": 13,
+            "med_num": 33,
+            "hard_num": 8
+        },
+        {
+            "name": "Animals",
+            "id": 27,
+            "easy_num": 29,
+            "med_num": 36,
+            "hard_num": 18
+        },
+        {
+            "name": "Vehicles",
+            "id": 28,
+            "easy_num": 21,
+            "med_num": 34,
+            "hard_num": 19
+        },
+        {
+            "name": "Entertainment: Comics",
+            "id": 29,
+            "easy_num": 16,
+            "med_num": 39,
+            "hard_num": 19
+        },
+        {
+            "name": "Science: Gadgets",
+            "id": 30,
+            "easy_num": 15,
+            "med_num": 10,
+            "hard_num": 6
+        },
+        {
+            "name": "Entertainment: Japanese Anime & Manga",
+            "id": 31,
+            "easy_num": 62,
+            "med_num": 83,
+            "hard_num": 47
+        },
+        {
+            "name": "Entertainment: Cartoon & Animations",
+            "id": 32,
+            "easy_num": 35,
+            "med_num": 44,
+            "hard_num": 21
+        }
+    ]
+}

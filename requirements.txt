@@ -1,0 +1,4 @@
+requests~=2.32.3
+SQLAlchemy~=2.0.40
+python-dotenv
+bcrypt~=4.3.0
