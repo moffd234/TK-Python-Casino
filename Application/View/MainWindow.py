@@ -1,6 +1,9 @@
 import tkinter
 from tkinter import ttk
 
+from Application.View.BaseFrame import BaseFrame
+from Application.View.EntryFrame import EntryFrame
+
 
 class MainWindow(tkinter.Tk):
     def __init__(self):
@@ -11,7 +14,9 @@ class MainWindow(tkinter.Tk):
         self.container: ttk.Frame = ttk.Frame(self)
         self.container.pack(fill="both", expand=True)
 
-    def render_frame(self, new_frame) -> None:
+        self.render_frame(EntryFrame)
+
+    def render_frame(self, new_frame: type[BaseFrame]) -> None:
         """
         Destroys previous frame and renders new frame.
         :param new_frame: A new Frame object.
@@ -22,3 +27,7 @@ class MainWindow(tkinter.Tk):
 
         frame: ttk.Frame = new_frame(self.container, self)
         frame.pack(fill="both", expand=True)
+
+if __name__ == "__main__":
+    app = MainWindow()
+    app.mainloop()
