@@ -1,0 +1,40 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:138.0) Gecko/20100101 Firefox/138.0" version="27.1.1">
+  <diagram name="Page-1" id="ariWhS4snwq5PhiXt2l8">
+    <mxGraphModel dx="1678" dy="824" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="fuXMZ4NcPsIUFkVtj4bJ-1" value="" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="250" width="370" height="370" as="geometry" />
+        </mxCell>
+        <mxCell id="fuXMZ4NcPsIUFkVtj4bJ-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="fuXMZ4NcPsIUFkVtj4bJ-4" target="fuXMZ4NcPsIUFkVtj4bJ-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fuXMZ4NcPsIUFkVtj4bJ-4" value="Login" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="290" y="160" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fuXMZ4NcPsIUFkVtj4bJ-5" value="Signup" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="460" y="160" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fuXMZ4NcPsIUFkVtj4bJ-7" value="" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry y="450" width="370" height="370" as="geometry" />
+        </mxCell>
+        <mxCell id="fuXMZ4NcPsIUFkVtj4bJ-10" value="Username" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="125" y="550" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fuXMZ4NcPsIUFkVtj4bJ-13" value="Password" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="125" y="620" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fuXMZ4NcPsIUFkVtj4bJ-15" value="Reset Password (Button)" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="97.5" y="670" width="175" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fuXMZ4NcPsIUFkVtj4bJ-17" value="Login" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="125" y="740" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fuXMZ4NcPsIUFkVtj4bJ-18" value="Error label (hidden)" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="155" y="480" width="60" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
