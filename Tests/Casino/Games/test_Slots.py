@@ -1,7 +1,6 @@
 from unittest.mock import patch, call
 
-from Application.Casino.Accounts.UserAccount import UserAccount
-from Application.Casino.Games.Slots.Slots import Slots, get_spin, handle_spin, get_payout, main
+from Application.Model.Games.Slots.Slots import Slots, get_spin, handle_spin, get_payout, main
 from Application.Utils.ANSI_COLORS import ANSI_COLORS
 from Tests.BaseTest import BaseTest, IOCONSOLE_PATH, SLOTS_FILE_PATH, SLOTS_CLASS_PATH, GAME_CLASS_PATH
 

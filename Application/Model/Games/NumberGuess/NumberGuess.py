@@ -4,7 +4,7 @@ import random
 from Application.Casino.Accounts.AccountManager import AccountManager
 from Application.Casino.Accounts.UserAccount import UserAccount
 from Application.Utils.ANSI_COLORS import ANSI_COLORS
-from Application.Casino.Games.Game import Game
+from Application.Model.Games.Game import Game
 
 
 class NumberGuess(Game):

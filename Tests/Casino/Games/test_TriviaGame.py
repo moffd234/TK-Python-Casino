@@ -4,10 +4,9 @@ from unittest.mock import patch, mock_open, call, Mock
 
 from requests import HTTPError
 
-from Application.Casino.Accounts.UserAccount import UserAccount
-from Application.Casino.Games.TriviaGame.Category import Category
-from Application.Casino.Games.TriviaGame.Question import Question
-from Application.Casino.Games.TriviaGame.TriviaGame import TriviaGame, create_questions, category_cacher, cache_loader, \
+from Application.Model.Games.TriviaGame.Category import Category
+from Application.Model.Games.TriviaGame.Question import Question
+from Application.Model.Games.TriviaGame.TriviaGame import TriviaGame, create_questions, category_cacher, cache_loader, \
     CACHE_FILE_PATH, parse_cached_categories, main
 from Tests.BaseTest import BaseTest, IOCONSOLE_PATH, TRIVIA_GAME_FILE_PATH, TRIVIA_GAME_CLASS_PATH
 

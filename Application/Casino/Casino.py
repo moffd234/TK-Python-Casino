@@ -3,12 +3,12 @@ import uuid
 
 from Application.Casino.Accounts.AccountManager import AccountManager, verify_password
 from Application.Casino.Accounts.UserAccount import UserAccount
-from Application.Casino.Games.CoinFlip.CoinFlip import CoinFlip
-from Application.Casino.Games.NumberGuess.NumberGuess import NumberGuess
-from Application.Casino.Games.RockPaperScissors.RPS import RPS
-from Application.Casino.Games.Slots.Slots import Slots
-from Application.Casino.Games.TicTacToe.TicTacToe import TicTacToe
-from Application.Casino.Games.TriviaGame.TriviaGame import TriviaGame
+from Application.Model.Games.CoinFlip.CoinFlip import CoinFlip
+from Application.Model.Games.NumberGuess.NumberGuess import NumberGuess
+from Application.Model.Games.RockPaperScissors.RPS import RPS
+from Application.Model.Games.Slots.Slots import Slots
+from Application.Model.Games.TicTacToe.TicTacToe import TicTacToe
+from Application.Model.Games.TriviaGame.TriviaGame import TriviaGame
 from Application.Utils.ANSI_COLORS import ANSI_COLORS
 from Application.Utils.IOConsole import IOConsole
 import re

@@ -2,7 +2,7 @@ import os
 from random import randint
 from Application.Casino.Accounts.AccountManager import AccountManager
 from Application.Casino.Accounts.UserAccount import UserAccount
-from Application.Casino.Games.Game import Game
+from Application.Model.Games.Game import Game
 
 
 def get_comp_turn() -> str:

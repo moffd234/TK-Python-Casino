@@ -1,6 +1,6 @@
 from unittest.mock import patch
 
-from Application.Casino.Games.NumberGuess.NumberGuess import NumberGuess, main
+from Application.Model.Games.NumberGuess.NumberGuess import NumberGuess, main
 from Tests.BaseTest import BaseTest, IOCONSOLE_PATH, NUMBERGUESS_FILE_PATH, NUMBERGUESS_CLASS_PATH
 
 

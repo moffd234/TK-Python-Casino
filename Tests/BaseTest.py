@@ -6,8 +6,8 @@ from Application.Casino.Accounts.UserAccount import UserAccount
 from Application.Casino.Accounts.db import init_db
 
 IOCONSOLE_PATH: str = "Application.Utils.IOConsole.IOConsole"
-GAMES_PATH: str = "Application.Casino.Games"
-GAME_CLASS_PATH: str = "Application.Casino.Games.Game.Game"
+GAMES_PATH: str = "Application.Model.Games"
+GAME_CLASS_PATH: str = "Application.Model.Games.Game.Game"
 TRIVIA_GAME_FILE_PATH: str = f"{GAMES_PATH}.TriviaGame.TriviaGame"
 TRIVIA_GAME_CLASS_PATH: str = f"{TRIVIA_GAME_FILE_PATH}.TriviaGame"
 TICTACTOE_FILE_PATH: str = f"{GAMES_PATH}.TicTacToe.TicTacToe"

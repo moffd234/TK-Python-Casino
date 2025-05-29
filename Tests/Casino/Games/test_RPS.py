@@ -1,6 +1,6 @@
 from unittest.mock import patch
 
-from Application.Casino.Games.RockPaperScissors.RPS import RPS, get_comp_turn, main
+from Application.Model.Games.RockPaperScissors.RPS import RPS, get_comp_turn, main
 from Tests.BaseTest import BaseTest, IOCONSOLE_PATH, RPS_FILE_PATH, RPS_CLASS_PATH, GAME_CLASS_PATH
 
 

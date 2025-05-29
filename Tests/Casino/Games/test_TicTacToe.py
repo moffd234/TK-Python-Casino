@@ -1,5 +1,5 @@
 from unittest.mock import patch
-from Application.Casino.Games.TicTacToe.TicTacToe import TicTacToe, main
+from Application.Model.Games.TicTacToe.TicTacToe import TicTacToe, main
 from Application.Utils.ANSI_COLORS import ANSI_COLORS
 from Tests.BaseTest import BaseTest, IOCONSOLE_PATH, TICTACTOE_CLASS_PATH, GAME_CLASS_PATH, TICTACTOE_FILE_PATH
 

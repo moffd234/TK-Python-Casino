@@ -1,4 +1,4 @@
-from Application.Casino.Games.TriviaGame.Category import Category
+from Application.Model.Games.TriviaGame.Category import Category
 from Tests.BaseTest import BaseTest
 
 
