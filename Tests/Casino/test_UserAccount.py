@@ -1,4 +1,3 @@
-from Application.Casino.Accounts.UserAccount import UserAccount
 from Tests.BaseTest import BaseTest
 
 

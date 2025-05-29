@@ -1,9 +1,9 @@
 import os.path
 import unittest
 
-from Application.Casino.Accounts.AccountManager import AccountManager
-from Application.Casino.Accounts.UserAccount import UserAccount
-from Application.Casino.Accounts.db import init_db
+from Application.Model.Accounts.AccountManager import AccountManager
+from Application.Model.Accounts.UserAccount import UserAccount
+from Application.Model.Accounts.db import init_db
 
 IOCONSOLE_PATH: str = "Application.Utils.IOConsole.IOConsole"
 GAMES_PATH: str = "Application.Model.Games"
@@ -21,8 +21,8 @@ COINFLIP_CLASS_PATH: str = f"{COINFLIP_FILE_PATH}.CoinFlip"
 NUMBERGUESS_FILE_PATH: str = f"{GAMES_PATH}.NumberGuess.NumberGuess"
 NUMBERGUESS_CLASS_PATH: str = f"{NUMBERGUESS_FILE_PATH}.NumberGuess"
 CASINO_CLASS_PATH: str = "Application.Casino.Casino.Casino"
-USER_ACCOUNT_CLASS_PATH: str = "Application.Casino.Accounts.UserAccount.UserAccount"
-ACCOUNT_MANAGER_CLASS_PATH: str = "Application.Casino.Accounts.AccountManager.AccountManager"
+USER_ACCOUNT_CLASS_PATH: str = "Application.Model.Accounts.UserAccount.UserAccount"
+ACCOUNT_MANAGER_CLASS_PATH: str = "Application.Model.Accounts.AccountManager.AccountManager"
 TEST_QUESTIONS: list[str] = ["Who is your favorite sports team?", "Test Answer",
                              "What street did you grow up on?", "Test Street"]
 

@@ -1,7 +1,7 @@
 import os
 from random import randint
-from Application.Casino.Accounts.AccountManager import AccountManager
-from Application.Casino.Accounts.UserAccount import UserAccount
+from Application.Model.Accounts.AccountManager import AccountManager
+from Application.Model.Accounts.UserAccount import UserAccount
 from Application.Model.Games.Game import Game
 
 

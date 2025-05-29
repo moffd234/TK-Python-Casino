@@ -2,9 +2,9 @@ import datetime
 import uuid
 from unittest.mock import MagicMock, patch
 
-from Application.Casino.Accounts.AccountManager import hash_password, verify_password
+from Application.Model.Accounts.AccountManager import hash_password, verify_password
 from Tests.BaseTest import BaseTest, TEST_QUESTIONS
-from Application.Casino.Accounts.UserAccount import UserAccount
+from Application.Model.Accounts.UserAccount import UserAccount
 
 
 class TestAccountManager(BaseTest):

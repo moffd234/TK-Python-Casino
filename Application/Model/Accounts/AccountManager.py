@@ -6,8 +6,8 @@ import bcrypt
 from sqlalchemy.orm import Session
 import uuid
 
-from Application.Casino.Accounts.UserAccount import UserAccount
-from Application.Casino.Accounts.db import init_db
+from Application.Model.Accounts.UserAccount import UserAccount
+from Application.Model.Accounts.db import init_db
 
 
 def hash_password(password: str) -> str:

@@ -1,4 +1,4 @@
-from Application.Casino.Accounts.db import Base
+from Application.Model.Accounts.db import Base
 from sqlalchemy import Column, String, Float, DateTime, UUID
 
 

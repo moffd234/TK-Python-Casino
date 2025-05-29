@@ -1,8 +1,8 @@
 import datetime
 import uuid
 
-from Application.Casino.Accounts.AccountManager import AccountManager, verify_password
-from Application.Casino.Accounts.UserAccount import UserAccount
+from Application.Model.Accounts.AccountManager import AccountManager, verify_password
+from Application.Model.Accounts.UserAccount import UserAccount
 from Application.Model.Games.CoinFlip.CoinFlip import CoinFlip
 from Application.Model.Games.NumberGuess.NumberGuess import NumberGuess
 from Application.Model.Games.RockPaperScissors.RPS import RPS

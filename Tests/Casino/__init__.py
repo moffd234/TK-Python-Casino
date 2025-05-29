@@ -1,2 +1,2 @@
-from Application.Casino.Accounts.db import init_db
+from Application.Model.Accounts.db import init_db
 init_db()
