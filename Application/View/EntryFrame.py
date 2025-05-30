@@ -1,11 +1,12 @@
 import tkinter
 from tkinter import ttk
 
+from Application.Controller.MainWindow import MainWindow
 from Application.View.BaseFrame import BaseFrame
 
 
 class EntryFrame(BaseFrame):
-    def __init__(self, parent, controller):
+    def __init__(self, parent: ttk.Frame, controller: MainWindow):
         super().__init__(parent, controller)
         self.controller: tkinter.Tk = controller  # MainWindow
 
