@@ -32,17 +32,3 @@ jobs:
       - name: Run tests
         run: |
           python -m unittest discover
-
-      - name: Build Executable
-        run: |
-          pyinstaller --onefile Application/MainApplication.py --name casino-app
-
-      - name: Debug artifact generation
-        run: |
-          ls -al dist
-
-      - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v4.6.2
-        with:
-          name: casino-app
-          path: dist/casino-app
