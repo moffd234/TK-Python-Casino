@@ -1,4 +1,3 @@
-import tkinter
 from tkinter import ttk
 from typing import TYPE_CHECKING, Any
 

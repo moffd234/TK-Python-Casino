@@ -1,4 +1,3 @@
-import tkinter
 from tkinter import ttk
 from typing import TYPE_CHECKING
 
@@ -12,7 +11,7 @@ if TYPE_CHECKING:
 class EntryFrame(BaseFrame):
     def __init__(self, parent: ttk.Frame, controller: 'MainWindow'):
         super().__init__(parent, controller)
-        self.controller: tkinter.Tk = controller  # MainWindow
+        self.controller: 'MainWindow' = controller  # MainWindow
 
         self.login_button: ttk.Button = ttk.Button(self, text="Login", command=self.login)
         self.signup_button: ttk.Button = ttk.Button(self, text="Sign Up", command=self.signup)
