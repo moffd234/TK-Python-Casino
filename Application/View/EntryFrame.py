@@ -25,7 +25,7 @@ class EntryFrame(BaseFrame):
         self.signup_button.place(relx=0.6, rely=0.5, anchor="center")
 
     def login(self) -> None:
-        self.controller.render_frame(LoginFrame)
+        self.controller.render_frame(LoginFrame, login_controller=self.controller.login_controller)
 
     def signup(self) -> None:
         pass
