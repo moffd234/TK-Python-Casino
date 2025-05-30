@@ -12,8 +12,13 @@ class EntryFrame(BaseFrame):
         self.login_button: ttk.Button = ttk.Button(self, text="Login", command=self.login)
         self.signup_button: ttk.Button = ttk.Button(self, text="Sign Up", command=self.signup)
 
-        self.login_button.grid(row=1, column=0, padx=20, pady=20, sticky="e")
-        self.signup_button.grid(row=1, column=1, padx=20, pady=20, sticky="w")
+        style: ttk.Style = ttk.Style()
+        style.configure(style="Title.TLabel", font=("TkDefaultFont", 25))
+        self.title_label: ttk.Label = ttk.Label(self, text="Welcome to Python Casino 🎰🎰🎰", style="Title.TLabel")
+
+        self.title_label.place(relx=0.5, rely=0.25, anchor="center")
+        self.login_button.place(relx=0.4, rely=0.5, anchor="center")
+        self.signup_button.place(relx=0.6, rely=0.5, anchor="center")
 
     def login(self) -> None:
         pass
