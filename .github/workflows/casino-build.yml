@@ -27,7 +27,7 @@ jobs:
 
       - name: Run database setup
         run: |
-          python -c "from Application.Casino.Accounts.db import init_db; init_db()"
+          python -c "from Application.Model.Accounts.db import init_db; init_db()"
 
       - name: Run tests
         run: |
