@@ -1,12 +1,16 @@
 import tkinter
 from tkinter import ttk
+from typing import TYPE_CHECKING
 
-from Application.Controller.MainWindow import MainWindow
 from Application.View.BaseFrame import BaseFrame
+from Application.View.LoginFrame import LoginFrame
+
+if TYPE_CHECKING:
+    from Application.Controller.MainWindow import MainWindow
 
 
 class EntryFrame(BaseFrame):
-    def __init__(self, parent: ttk.Frame, controller: MainWindow):
+    def __init__(self, parent: ttk.Frame, controller: 'MainWindow'):
         super().__init__(parent, controller)
         self.controller: tkinter.Tk = controller  # MainWindow
 
@@ -22,7 +26,7 @@ class EntryFrame(BaseFrame):
         self.signup_button.place(relx=0.6, rely=0.5, anchor="center")
 
     def login(self) -> None:
-        pass
+        self.controller.render_frame(LoginFrame)
 
     def signup(self) -> None:
         pass
