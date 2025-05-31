@@ -2,8 +2,8 @@ import tkinter
 
 
 class PlaceholderEntry(tkinter.Entry):
-    def __init__(self, master=None, placeholder="", color='grey'):
-        super().__init__(master)
+    def __init__(self, master=None, placeholder="", color='grey', **kwargs):
+        super().__init__(master, **kwargs)
         self.placeholder: str = placeholder
         self.color: str = color
         self.default_fg_color: str = self.cget('foreground')
