@@ -8,18 +8,18 @@ class AccountController:
         self.manager: AccountManager = manager
         self.account: UserAccount | None = None
 
-    def login(self, username: str, password: str) -> UserAccount | None:
+    def login(self, username: str, password: str) -> bool:
         """
         Attempts to authenticate a user with the given credentials
 
         If user account that matches the username and password exists,
-        self.account is set to the account and the account is returned.
-        Otherwise, None is returned.
+        self.account is set to the account and True is returned.
+        Otherwise, False is returned.
 
         :param username: Username entered by the user
         :param password: Password entered by the user
-        :return: UserAccount if a user was found, None otherwise
+        :return: True if a user was found, False otherwise
         """
         self.account = self.manager.get_account(username, password)
-        return self.account
+        return self.account is not None
 
