@@ -2,7 +2,7 @@ from Application.Model.Accounts.AccountManager import AccountManager
 from Application.Model.Accounts.UserAccount import UserAccount
 
 
-class LoginController:
+class AccountController:
     def __init__(self, manager: AccountManager):
         self.manager: AccountManager = manager
         self.account: UserAccount | None = None

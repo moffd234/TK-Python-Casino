@@ -1,7 +1,7 @@
 import tkinter
 from tkinter import ttk
 
-from Application.Controller.LoginController import LoginController
+from Application.Controller.AccountController import AccountController
 from Application.Model.Accounts.AccountManager import AccountManager
 from Application.View.BaseFrame import BaseFrame
 from Application.View.EntryFrame import EntryFrame
@@ -13,7 +13,7 @@ class MainWindow(tkinter.Tk):
         self.title("Python Casino!")
         self.geometry("800x800")
         self.account_manager: AccountManager = AccountManager()
-        self.login_controller: LoginController = LoginController(self.account_manager)
+        self.login_controller: AccountController = AccountController(self.account_manager)
 
         self.container: ttk.Frame = ttk.Frame(self)
         self.container.pack(fill="both", expand=True)
