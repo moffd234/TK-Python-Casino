@@ -36,7 +36,7 @@ class TestCasino(BaseTest):
         mock_selection.assert_called_once()
 
     def assert_account_info(self, account, expected_username="test_username", expected_password="ValidPassword123!",
-                            hashed_password = None):
+                            hashed_password=None):
         expected_username = expected_username
         expected_password = expected_password
         expected_balance = 50.0
@@ -157,7 +157,7 @@ class TestCasino(BaseTest):
     @patch(f"{IOCONSOLE_PATH}.get_string_input", side_effect=["ValidPassword123!", "NewValidPassword123!"])
     def test_reset_password(self, mock_input, mock_print):
         self.casino.account = self.manager.create_account("test_username", "ValidPassword123!",
-                                                   "email@test_domain.com", TEST_QUESTIONS)
+                                                          "email@test_domain.com", TEST_QUESTIONS)
         was_successful: bool = self.casino.reset_password()
 
         expected_password = "NewValidPassword123!"
@@ -579,7 +579,7 @@ class TestCasino(BaseTest):
         self.assertTrue(actual)
 
     @patch(f"{ACCOUNT_MANAGER_CLASS_PATH}.update_password")
-    @patch(f"{IOCONSOLE_PATH}.get_string_input", side_effect=["none","ValidPassword123!"])
+    @patch(f"{IOCONSOLE_PATH}.get_string_input", side_effect=["none", "ValidPassword123!"])
     @patch(f"{IOCONSOLE_PATH}.print_error")
     @patch(f"{IOCONSOLE_PATH}.print_colored")
     def test_update_password_fail_then_valid(self, mock_print, mock_print_error, mock_input, mock_update):
@@ -592,7 +592,7 @@ class TestCasino(BaseTest):
                                                  "- At least one number\n"
                                                  "- At least one special character")
         mock_input.assert_has_calls([call("Enter new password: ", return_in_lower=False),
-                                    call("Enter new password: ", return_in_lower=False)])
+                                     call("Enter new password: ", return_in_lower=False)])
         mock_print.assert_called_once_with("Your password has been updated!", ANSI_COLORS.GREEN)
         mock_update.assert_called_once()
 
@@ -905,8 +905,8 @@ class TestCasino(BaseTest):
 
     @patch(f"{IOCONSOLE_PATH}.get_string_input", side_effect=["incorrect_email", "test@email.com"])
     @patch(f"{ACCOUNT_MANAGER_CLASS_PATH}.get_account_by_email",
-           side_effect=[None,UserAccount("test_username", "ValidPassword123!",50.0,
-                                         "test@email.com", TEST_QUESTIONS)])
+           side_effect=[None, UserAccount("test_username", "ValidPassword123!", 50.0,
+                                          "test@email.com", TEST_QUESTIONS)])
     @patch(f"{IOCONSOLE_PATH}.print_error")
     def test_prompt_and_check_email_invalid_then_valid(self, mock_print, mock_get_account, mock_input):
         actual: bool = self.casino.prompt_and_check_email()
@@ -989,7 +989,7 @@ class TestCasino(BaseTest):
         actual: bool = self.casino.get_security_answers()
 
         mock_prompt.assert_called_once_with(self.casino.account.security_question_one,
-                                           self.casino.account.security_answer_one)
+                                            self.casino.account.security_answer_one)
         self.assertFalse(actual)
 
     @patch(f"{CASINO_CLASS_PATH}.prompt_for_security_answer", side_effect=[True, False])

@@ -1,7 +1,7 @@
 import os.path
 import unittest
 
-from Application.Model.Accounts.AccountManager import AccountManager
+from Application.Model.Accounts.AccountManager import AccountManager, verify_password
 from Application.Model.Accounts.UserAccount import UserAccount
 from Application.Model.Accounts.db import init_db
 
@@ -34,6 +34,24 @@ class BaseTest(unittest.TestCase):
         self.manager = AccountManager(session=self.session)
         self.account = UserAccount("test_username", "ValidPassword123!", 50.0,
                                    "test@email.com", TEST_QUESTIONS)
+
+    def assert_account_info(self, actual, expected_username="test_username",
+                            expected_password="ValidPassword123!", hashed_password=None):
+        expected = UserAccount(expected_username, expected_password, 50.0,
+                               "test@email.com", TEST_QUESTIONS)
+
+        self.assertEqual(expected.username, actual.username)
+        self.assertEqual(expected.balance, actual.balance)
+        self.assertEqual(expected.email, actual.email)
+        self.assertEqual(expected.security_question_one, actual.security_question_one)
+        self.assertEqual(expected.security_question_two, actual.security_question_two)
+        self.assertEqual(expected.security_answer_one, actual.security_answer_one)
+        self.assertEqual(expected.security_answer_two, actual.security_answer_two)
+
+        if hashed_password:
+            verify_password("test_password", hashed_password)
+        else:
+            self.assertEqual(expected.password, actual.password)
 
     def tearDown(self):
         if hasattr(self.manager, 'session'):

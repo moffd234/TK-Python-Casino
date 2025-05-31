@@ -33,29 +33,11 @@ class TestAccountManager(BaseTest):
 
         self.assertIsNone(subject)
 
-    def assert_account_info(self, actual: UserAccount, hashed_password: str | None = None):
-        expected = UserAccount("test_username", "test_password", 50.0,
-                               "test@email.com", TEST_QUESTIONS)
-
-        self.assertEqual(expected.username, actual.username)
-        self.assertEqual(expected.balance, actual.balance)
-        self.assertEqual(expected.email, actual.email)
-        self.assertEqual(expected.security_question_one, actual.security_question_one)
-        self.assertEqual(expected.security_question_two, actual.security_question_two)
-        self.assertEqual(expected.security_answer_one, actual.security_answer_one)
-        self.assertEqual(expected.security_answer_two, actual.security_answer_two)
-
-        if hashed_password:
-            verify_password("test_password", hashed_password)
-        else:
-            self.assertEqual(expected.password, actual.password)
-
     def test_get_account(self):
         self.manager.create_account("test_username", "test_password",
                                     "test@email.com", TEST_QUESTIONS)
         actual = self.manager.get_account("test_username", "test_password")
         self.assert_account_info(actual, hashed_password=actual.password)
-
 
     def test_get_account_none(self):
         actual: UserAccount = self.manager.get_account("this_name_won't_be_used", "secure123")
