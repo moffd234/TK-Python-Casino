@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:138.0) Gecko/20100101 Firefox/138.0" version="27.1.1">
   <diagram name="Page-1" id="ariWhS4snwq5PhiXt2l8">
-    <mxGraphModel dx="1426" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2276" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -57,6 +57,33 @@
         </mxCell>
         <mxCell id="rRSfC-0G60dBEqh1zXZG-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.443;entryY=0.995;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="rRSfC-0G60dBEqh1zXZG-3" target="fuXMZ4NcPsIUFkVtj4bJ-1">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rRSfC-0G60dBEqh1zXZG-8" value="" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="-520" y="450" width="370" height="370" as="geometry" />
+        </mxCell>
+        <mxCell id="rRSfC-0G60dBEqh1zXZG-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.992;entryY=0.476;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="fuXMZ4NcPsIUFkVtj4bJ-15" target="rRSfC-0G60dBEqh1zXZG-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rRSfC-0G60dBEqh1zXZG-10" value="Back" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-320" y="740" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="rRSfC-0G60dBEqh1zXZG-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=-0.005;entryY=0.522;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="rRSfC-0G60dBEqh1zXZG-10" target="fuXMZ4NcPsIUFkVtj4bJ-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rRSfC-0G60dBEqh1zXZG-13" value="Validate" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-480" y="740" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="rRSfC-0G60dBEqh1zXZG-14" value="email" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-395" y="500" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="rRSfC-0G60dBEqh1zXZG-15" value="Security Questions 1" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-395" y="550" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="rRSfC-0G60dBEqh1zXZG-16" value="Security Questions 2" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-395" y="600" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="rRSfC-0G60dBEqh1zXZG-18" value="Error Label" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-395" y="650" width="120" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
