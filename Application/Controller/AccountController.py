@@ -1,4 +1,6 @@
+import datetime
 import re
+import uuid
 
 from Application.Model.Accounts.AccountManager import AccountManager
 from Application.Model.Accounts.UserAccount import UserAccount
@@ -99,3 +101,19 @@ class AccountController:
         """
         self.manager.email_recovery_token(self.account)
         return self.account.reset_token
+
+    def is_token_valid(self, token: str) -> bool:
+        """
+        Validates that the user's entered token matches the one stored and is not expired.
+
+        :param token: The token entered by the user.
+        :return: True if the token matches and has not expired, False otherwise.
+        """
+        try:
+            input_token: uuid.UUID = uuid.UUID(token)
+            now = datetime.datetime.now(datetime.UTC)
+            expiration: datetime = self.account.reset_token_expiration.replace(tzinfo=datetime.timezone.utc)
+            return self.account.reset_token == input_token and expiration >= now
+
+        except ValueError:
+            return False
