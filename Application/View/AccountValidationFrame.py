@@ -68,11 +68,14 @@ class AccountValidationFrame(BaseFrame):
             self.answer_two_label.place_forget()
 
             self.validate_button.configure(command=self.validate_auth_token)
+
+            self.place_auth_token()
         else:
             self.error_label.configure(text="Incorrect security answers")
 
-    def place_token_auth(self):
-        pass
+    def place_auth_token(self):
+        self.error_label.configure(text="Auth Token Has Been Emailed", foreground="green")
+        self.auth_entry.place(relx=0.5, rely=0.5, anchor="center")
 
     def validate_auth_token(self):
         pass
