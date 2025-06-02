@@ -12,8 +12,8 @@ class MainWindow(tkinter.Tk):
         super().__init__()
         self.title("Python Casino!")
         self.geometry("800x800")
-        self.account_manager: AccountManager = AccountManager()
-        self.login_controller: AccountController = AccountController(self.account_manager)
+        account_manager: AccountManager = AccountManager()
+        self.account_controller: AccountController = AccountController(account_manager)
 
         self.container: ttk.Frame = ttk.Frame(self)
         self.container.pack(fill="both", expand=True)
