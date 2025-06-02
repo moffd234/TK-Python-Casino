@@ -1,3 +1,5 @@
+import datetime
+import uuid
 from unittest.mock import patch
 
 from Application.Controller.AccountController import AccountController, is_password_valid
@@ -13,6 +15,7 @@ class TestAccountController(BaseTest):
         self.account_controller = AccountController(manager)
         test_account: UserAccount = UserAccount("test_username", "ValidPassword123!", 10.0,
                                                 "email@testdomain.com", TEST_QUESTIONS)
+        self.account_controller.account = test_account
 
     @patch(f"{ACCOUNT_MANAGER_CLASS_PATH}.get_account",
            return_value=UserAccount("test_username","ValidPassword123!",
@@ -110,3 +113,35 @@ class TestAccountController(BaseTest):
         self.assertIsNone(actual)
         self.assertIsNone(self.account_controller.account)
         mock_get_account.assert_called_once_with("test@email.com")
+
+    def test_is_token_valid_true(self):
+        token: uuid.UUID = uuid.uuid4()
+        self.account_controller.account.reset_token = token
+        self.account_controller.account.reset_token_expiration = datetime.datetime.now(datetime.UTC) + datetime.timedelta(minutes=15)
+
+        actual: bool = self.account_controller.is_token_valid(str(token))
+        self.assertTrue(actual)
+
+    def test_is_token_valid_incorrect_token(self):
+        token: uuid.UUID = uuid.uuid4()
+        self.account_controller.account.reset_token = uuid.uuid4()
+        self.account_controller.account.reset_token_expiration = datetime.datetime.now(datetime.UTC) + datetime.timedelta(minutes=15)
+
+        actual: bool = self.account_controller.is_token_valid(str(token))
+        self.assertFalse(actual)
+
+    def test_is_token_valid_not_uuid(self):
+        token: str = "invalid token"
+        self.account_controller.account.reset_token = uuid.uuid4()
+        self.account_controller.account.reset_token_expiration = datetime.datetime.now(datetime.UTC) + datetime.timedelta(minutes=15)
+
+        actual: bool = self.account_controller.is_token_valid(token)
+        self.assertFalse(actual)
+
+    def test_is_token_valid_expired(self):
+        token: uuid.UUID = uuid.uuid4()
+        self.account_controller.account.reset_token = token
+        self.account_controller.account.reset_token_expiration = datetime.datetime.now(datetime.UTC) - datetime.timedelta(minutes=1)
+
+        actual: bool = self.account_controller.is_token_valid(str(token))
+        self.assertFalse(actual)
