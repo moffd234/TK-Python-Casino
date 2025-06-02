@@ -28,3 +28,5 @@ class AccountValidationFrame(BaseFrame):
         self.validate_button.place(relx=0.4, rely=0.65, anchor="center")
         self.back_button.place(relx=0.6, rely=0.65, anchor="center")
 
+    def validate_email(self):
+        pass

@@ -1,4 +1,3 @@
-import unittest
 from unittest.mock import patch
 
 from Application.Controller.AccountController import AccountController, is_password_valid
@@ -93,3 +92,21 @@ class TestAccountController(BaseTest):
         test_password: str = ""
 
         self.assertFalse(is_password_valid(test_password))
+
+    @patch(f"{ACCOUNT_MANAGER_CLASS_PATH}.get_account_by_email",
+           return_value=UserAccount("test_username","ValidPassword123!",
+                                    50.0, "test@email.com", TEST_QUESTIONS))
+    def test_validate_email_true(self, mock_get_account):
+        actual: UserAccount = self.account_controller.validate_email("test@email.com")
+
+        self.assert_account_info(actual)
+        mock_get_account.assert_called_once_with("test@email.com")
+
+    @patch(f"{ACCOUNT_MANAGER_CLASS_PATH}.get_account_by_email",
+           return_value=None)
+    def test_validate_email_false(self, mock_get_account):
+        actual: UserAccount = self.account_controller.validate_email("test@email.com")
+
+        self.assertIsNone(actual)
+        self.assertIsNone(self.account_controller.account)
+        mock_get_account.assert_called_once_with("test@email.com")
