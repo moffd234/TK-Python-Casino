@@ -1,5 +1,37 @@
+import re
+
 from Application.Model.Accounts.AccountManager import AccountManager
 from Application.Model.Accounts.UserAccount import UserAccount
+
+def is_password_valid(password: str) -> bool:
+    """
+    Checks if the password has the following requirements:
+    - At least 8 characters long
+    - At least one uppercase letter
+    - At least one lowercase letter
+    - At least one number
+    - At least one special character
+
+    :param password: password previously inputted by user
+    :return: true if password is valid
+    """
+    pattern = r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$"
+    return True if re.match(pattern, password) else False
+
+
+def is_email_valid(email: str) -> bool:
+    """
+    Checks that the given email address has the following:
+    - One or more character before an @ symbol
+    - @ symbol
+    - a . before a domain extension
+    - Two or more characters for the domain extension after the .
+
+    :param email: email previously inputted by user
+    :return: return True if email is valid. Otherwise, returns False
+    """
+    pattern = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+    return True if re.match(pattern, email) else False
 
 
 class AccountController:
@@ -23,3 +55,5 @@ class AccountController:
         self.account = self.manager.get_account(username, password)
         return self.account is not None
 
+    def create_account(self, username: str, password: str, email: str, security_questions: list[str]) -> UserAccount:
+        pass
