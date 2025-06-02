@@ -8,9 +8,8 @@ if TYPE_CHECKING:
     from Application.Controller.MainWindow import MainWindow
 
 
-class PasswordResetFrame(BaseFrame):
-    def __init__(self, parent: ttk.Frame, controller: 'MainWindow', from_login: bool=True):
+class AccountValidationFrame(BaseFrame):
+    def __init__(self, parent: ttk.Frame, controller: 'MainWindow'):
         super().__init__(parent, controller)
         self.controller: 'MainWindow' = controller
-        self.from_login: bool = from_login
 
