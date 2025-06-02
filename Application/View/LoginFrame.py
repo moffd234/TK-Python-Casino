@@ -2,7 +2,6 @@ from tkinter import ttk
 from typing import TYPE_CHECKING
 from Application.Utils.PlaceholderEntry import PlaceholderEntry as pEntry
 
-from Application.Controller.AccountController import AccountController
 from Application.View.BaseFrame import BaseFrame
 
 if TYPE_CHECKING:
@@ -10,10 +9,9 @@ if TYPE_CHECKING:
 
 
 class LoginFrame(BaseFrame):
-    def __init__(self, parent: ttk.Frame, controller: 'MainWindow', account_controller: AccountController) -> None:
+    def __init__(self, parent: ttk.Frame, controller: 'MainWindow') -> None:
         super().__init__(parent, controller)
         self.controller = controller
-        self.account_controller = account_controller
 
         self.username_entry: pEntry = pEntry(self, placeholder="Username", width=50)
         self.password_entry: pEntry = pEntry(self, placeholder="Password", width=50)
