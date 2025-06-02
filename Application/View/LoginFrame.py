@@ -39,15 +39,15 @@ class LoginFrame(BaseFrame):
         else:
             self.error_label.place(relx=0.5, rely=0.5, anchor="center")
 
-    def transition_back(self):
+    def transition_back(self) -> None:
         from Application.View.EntryFrame import EntryFrame
         self.controller.render_frame(EntryFrame)
 
-    def transition_to_validation(self):
+    def transition_to_validation(self) -> None:
         from Application.View.AccountValidationFrame import AccountValidationFrame
         self.controller.render_frame(AccountValidationFrame)
 
-    def place_elements(self):
+    def place_elements(self) -> None:
         self.username_entry.place(relx=0.5, rely=0.35, anchor="center")
         self.password_entry.place(relx=0.5, rely=0.45, anchor="center")
 
