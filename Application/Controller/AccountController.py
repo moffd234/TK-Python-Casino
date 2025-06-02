@@ -87,3 +87,15 @@ class AccountController:
         """
         self.account = self.manager.get_account_by_email(email)
         return self.account if self.account else None
+
+    def email_reset_token(self) -> str:
+        """
+        Generates a reset token for the currently loaded account and sends it via email.
+
+        Delegates token generation and email dispatch to AccountManager. Assumes that
+        self.account has already been set via prior validation.
+
+        :return: The generated reset token as a string.
+        """
+        self.manager.email_recovery_token(self.account)
+        return self.account.reset_token
