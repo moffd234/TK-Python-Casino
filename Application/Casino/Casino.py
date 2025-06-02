@@ -46,6 +46,14 @@ def is_email_valid(email: str) -> bool:
 
 
 class Casino:
+    """
+    Legacy class from the pre-Tkinter version of the application.
+
+    Originally used for screen navigation and the main play loop in the console-based interface.
+    Now deprecated and partially replaced by the MVC structure implemented with the Tkinter GUI.
+
+    Once all capabilities of this file have been implemented into the Tkinter application this file will be deleted
+    """
     def __init__(self):
         self.console = IOConsole(ANSI_COLORS.BLUE)
         self.manager = AccountManager()
