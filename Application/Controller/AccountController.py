@@ -3,6 +3,7 @@ import re
 from Application.Model.Accounts.AccountManager import AccountManager
 from Application.Model.Accounts.UserAccount import UserAccount
 
+
 def is_password_valid(password: str) -> bool:
     """
     Checks if the password has the following requirements:
@@ -76,3 +77,13 @@ class AccountController:
             return False, "Account with that username already exists"
 
         return True, None
+
+    def validate_email(self, email: str) -> UserAccount:
+        """
+        Attempts to find and return a user account associated with the given email.
+
+        :param email: Email entered by the user.
+        :return: The matching UserAccount if found, otherwise None.
+        """
+        self.account = self.manager.get_account_by_email(email)
+        return self.account if self.account else None
