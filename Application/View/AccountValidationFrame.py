@@ -19,8 +19,9 @@ class AccountValidationFrame(BaseFrame):
         self.email_entry: pEntry = pEntry(self, "Email", width=50)
         self.answer_one_entry: pEntry = pEntry(self, "Answer", width=50)
         self.answer_two_entry: pEntry = pEntry(self, "Answer", width=50)
+        self.auth_entry: pEntry = pEntry(self, "Auth Token", width=50)
 
-        self.error_label = ttk.Label(parent)
+        self.error_label = ttk.Label(parent, foreground="red")
         self.answer_one_label = ttk.Label(parent)
         self.answer_two_label = ttk.Label(parent)
 
@@ -37,7 +38,7 @@ class AccountValidationFrame(BaseFrame):
     def get_account_from_email(self):
         self.account: UserAccount = self.controller.account_controller.validate_email(self.email_entry.get())
         if not self.account:
-            self.error_label.configure(text="Invalid email", foreground="red")
+            self.error_label.configure(text="Invalid email")
             self.error_label.place(relx=0.5, rely=0.15, anchor="center")
 
         else:
@@ -56,4 +57,22 @@ class AccountValidationFrame(BaseFrame):
         self.answer_two_entry.place(relx=0.5, rely=0.5, anchor="center")
 
     def validate_security_answers(self):
+        if (self.answer_one_entry.get() == self.account.security_answer_one
+                and self.answer_two_entry.get() == self.account.security_answer_two):
+            self.controller.account_controller.email_reset_token()
+
+            # Clear security prompts
+            self.answer_one_entry.place_forget()
+            self.answer_two_entry.place_forget()
+            self.answer_one_label.place_forget()
+            self.answer_two_label.place_forget()
+
+            self.validate_button.configure(command=self.validate_auth_token)
+        else:
+            self.error_label.configure(text="Incorrect security answers")
+
+    def place_token_auth(self):
+        pass
+
+    def validate_auth_token(self):
         pass
