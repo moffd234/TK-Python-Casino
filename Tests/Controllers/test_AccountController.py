@@ -3,7 +3,7 @@ import uuid
 from unittest.mock import patch
 
 from Application.Controller.AccountController import AccountController, is_password_valid
-from Application.Model.Accounts.AccountManager import AccountManager
+from Application.Model.Accounts.AccountManager import AccountManager, verify_password
 from Application.Model.Accounts.UserAccount import UserAccount
 from Tests.BaseTest import ACCOUNT_MANAGER_CLASS_PATH, BaseTest, TEST_QUESTIONS
 
@@ -145,3 +145,9 @@ class TestAccountController(BaseTest):
 
         actual: bool = self.account_controller.is_token_valid(str(token))
         self.assertFalse(actual)
+
+    def test_reset_password(self):
+        self.account_controller.reset_password("NewValidPassword123!")
+        actual: bool = verify_password("NewValidPassword123!", self.account_controller.account.password)
+
+        self.assertTrue(actual)
