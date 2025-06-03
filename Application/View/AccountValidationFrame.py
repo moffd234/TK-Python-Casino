@@ -23,9 +23,9 @@ class AccountValidationFrame(BaseFrame):
         self.answer_two_entry: pEntry = pEntry(self, "Answer", width=50)
         self.auth_entry: pEntry = pEntry(self, "Auth Token", width=50)
 
-        self.error_label = ttk.Label(parent, foreground="red")
-        self.answer_one_label = ttk.Label(parent)
-        self.answer_two_label = ttk.Label(parent)
+        self.error_label = ttk.Label(self, foreground="red")
+        self.answer_one_label = ttk.Label(self)
+        self.answer_two_label = ttk.Label(self)
 
         self.validate_button: ttk.Button = ttk.Button(self, text="Validate", command=self.get_account_from_email)
         self.back_button: ttk.Button = ttk.Button(self, text="Back", command=self.transition_back)
