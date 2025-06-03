@@ -4,6 +4,8 @@ from typing import TYPE_CHECKING
 from Application.Model.Accounts.UserAccount import UserAccount
 from Application.Utils.PlaceholderEntry import PlaceholderEntry as pEntry
 from Application.View.BaseFrame import BaseFrame
+from Application.View.EntryFrame import EntryFrame
+from Application.View.LoginFrame import LoginFrame
 from Application.View.PasswordResetFrame import PasswordResetFrame
 
 if TYPE_CHECKING:
@@ -26,7 +28,7 @@ class AccountValidationFrame(BaseFrame):
         self.answer_two_label = ttk.Label(parent)
 
         self.validate_button: ttk.Button = ttk.Button(self, text="Validate", command=self.get_account_from_email)
-        self.back_button: ttk.Button = ttk.Button(self, text="Back")
+        self.back_button: ttk.Button = ttk.Button(self, text="Back", command=self.transition_back)
 
         self.place()
 
@@ -84,3 +86,6 @@ class AccountValidationFrame(BaseFrame):
         else:
             self.error_label.configure(text="Incorrect auth token", foreground="red")
             self.error_label.place()
+
+    def transition_back(self):
+        self.controller.render_frame(LoginFrame)
