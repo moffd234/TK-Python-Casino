@@ -1,10 +1,10 @@
 from tkinter import ttk
 from typing import TYPE_CHECKING
 
-from Application.Controller.MainWindow import MainWindow
 from Application.Model.Accounts.UserAccount import UserAccount
 from Application.Utils.PlaceholderEntry import PlaceholderEntry as pEntry
 from Application.View.BaseFrame import BaseFrame
+from Application.View.PasswordResetFrame import PasswordResetFrame
 
 if TYPE_CHECKING:
     from Application.Controller.MainWindow import MainWindow
@@ -75,7 +75,12 @@ class AccountValidationFrame(BaseFrame):
 
     def place_auth_token(self):
         self.error_label.configure(text="Auth Token Has Been Emailed", foreground="green")
+        self.error_label.place(relx=0.5, rely=0.15, anchor="center")
         self.auth_entry.place(relx=0.5, rely=0.5, anchor="center")
 
     def validate_auth_token(self):
-        pass
+        if self.auth_entry.get().strip() == str(self.account.reset_token):
+            self.controller.render_frame(PasswordResetFrame)
+        else:
+            self.error_label.configure(text="Incorrect auth token", foreground="red")
+            self.error_label.place()
