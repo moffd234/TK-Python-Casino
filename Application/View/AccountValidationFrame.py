@@ -30,12 +30,12 @@ class AccountValidationFrame(BaseFrame):
 
         self.place()
 
-    def place(self):
+    def place(self) -> None:
         self.email_entry.place(relx=0.5, rely=0.5, anchor="center")
         self.validate_button.place(relx=0.4, rely=0.65, anchor="center")
         self.back_button.place(relx=0.6, rely=0.65, anchor="center")
 
-    def get_account_from_email(self):
+    def get_account_from_email(self) -> None:
         self.account: UserAccount = self.controller.account_controller.validate_email(self.email_entry.get())
         if not self.account:
             self.error_label.configure(text="Invalid email")
@@ -46,7 +46,7 @@ class AccountValidationFrame(BaseFrame):
             self.validate_button.configure(command=self.validate_security_answers)
             self.place_security_questions()
 
-    def place_security_questions(self):
+    def place_security_questions(self) -> None:
         self.answer_one_label.configure(text=self.account.security_question_one)
         self.answer_two_label.configure(text=self.account.security_question_two)
 
@@ -56,7 +56,7 @@ class AccountValidationFrame(BaseFrame):
         self.answer_two_label.place(relx=0.5, rely=0.4, anchor="center")
         self.answer_two_entry.place(relx=0.5, rely=0.5, anchor="center")
 
-    def validate_security_answers(self):
+    def validate_security_answers(self) -> None:
         if (self.answer_one_entry.get() == self.account.security_answer_one
                 and self.answer_two_entry.get() == self.account.security_answer_two):
             self.controller.account_controller.email_reset_token()
@@ -73,12 +73,12 @@ class AccountValidationFrame(BaseFrame):
         else:
             self.error_label.configure(text="Incorrect security answers")
 
-    def place_auth_token(self):
+    def place_auth_token(self) -> None:
         self.error_label.configure(text="Auth Token Has Been Emailed", foreground="green")
         self.error_label.place(relx=0.5, rely=0.15, anchor="center")
         self.auth_entry.place(relx=0.5, rely=0.5, anchor="center")
 
-    def validate_auth_token(self):
+    def validate_auth_token(self) -> None:
         if self.auth_entry.get().strip() == str(self.account.reset_token):
             self.controller.render_frame(PasswordResetFrame)
         else:
