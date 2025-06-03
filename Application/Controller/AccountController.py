@@ -117,3 +117,11 @@ class AccountController:
 
         except ValueError:
             return False
+
+    def reset_password(self, new_password) -> None:
+        """
+        Resets the password for the current UserAccount
+        :param new_password: a new password entered by the user.
+        :return: None
+        """
+        self.manager.update_password(self.account, new_password)
