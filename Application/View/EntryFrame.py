@@ -3,6 +3,7 @@ from typing import TYPE_CHECKING
 
 from Application.View.BaseFrame import BaseFrame
 from Application.View.LoginFrame import LoginFrame
+from Application.View.SignUpFrame import SignUpFrame
 
 if TYPE_CHECKING:
     from Application.Controller.MainWindow import MainWindow
@@ -28,4 +29,4 @@ class EntryFrame(BaseFrame):
         self.controller.render_frame(LoginFrame)
 
     def signup(self) -> None:
-        pass
+        self.controller.render_frame(SignUpFrame)
