@@ -38,8 +38,8 @@ class SignUpFrame(BaseFrame):
         self.security_entry_one: pEntry = pEntry(self, "Security Answer", width=50)
         self.security_entry_two: pEntry = pEntry(self, "Security Answer", width=50)
 
-        self.security_question_one: ttk.Combobox = ttk.Combobox(self, values=possible_questions, width=60)
-        self.security_question_two: ttk.Combobox = ttk.Combobox(self, values=possible_questions, width=60)
+        self.security_question_one: ttk.Combobox = ttk.Combobox(self, values=possible_questions, state="readonly", width=60)
+        self.security_question_two: ttk.Combobox = ttk.Combobox(self, values=possible_questions, state="readonly", width=60)
 
         self.reset_button: ttk.Button = ttk.Button(self, text="Signup", command="")
         self.back_button: ttk.Button = ttk.Button(self, text="Back", command="")
