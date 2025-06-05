@@ -20,7 +20,7 @@ class PasswordResetFrame(BaseFrame):
         self.password_entry: pEntry = pEntry(self, "Enter New Password", width=50)
         self.confirm_entry: pEntry = pEntry(self, "Confirm Password", width=50)
 
-        self.reset_button: ttk.Button = ttk.Button(self, text="Reset", command="")
+        self.reset_button: ttk.Button = ttk.Button(self, text="Reset", command=self.reset_password)
         self.back_button: ttk.Button = ttk.Button(self, text="Back", command="")
 
         self.place()
