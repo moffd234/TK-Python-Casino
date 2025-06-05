@@ -125,3 +125,7 @@ class AccountController:
         :return: None
         """
         self.manager.update_password(self.account, new_password)
+
+    def sign_up(self, username, password, email, security_questions) -> bool:
+        self.account = self.manager.create_account(username, password, email, security_questions)
+        return self.account is not None
