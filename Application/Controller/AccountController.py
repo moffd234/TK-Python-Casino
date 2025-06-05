@@ -63,7 +63,7 @@ class AccountController:
         """
         Attempts to create an account with the given credentials. Then returns True, None if successful.
 
-        Validates email and username, then attempts to create an account with AccountManager.create_account. If
+        Attempts to create an account with AccountManager.create_account. If
         successful returns True, None. Otherwise, returns False with an error message.
         :param username: Username entered by the user
         :param password: Password entered by the user
@@ -72,8 +72,7 @@ class AccountController:
         :return: A tuple (success, error) where success is True if creation succeeded, and error is None or a message.
         """
 
-        if is_email_valid(email) and is_password_valid(password):
-            self.account = self.manager.create_account(username, password, email, security_questions)
+        self.account = self.manager.create_account(username, password, email, security_questions)
 
         if not self.account:
             return False, "Account with that username already exists"
