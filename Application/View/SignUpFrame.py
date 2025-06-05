@@ -45,3 +45,26 @@ class SignUpFrame(BaseFrame):
 
         self.reset_button: ttk.Button = ttk.Button(self, text="Signup", command="")
         self.back_button: ttk.Button = ttk.Button(self, text="Back", command="")
+
+        self.place_elements()
+
+    def place_elements(self):
+        vertical_spacing = 0.08
+        base_y = 0.28
+
+        self.username_entry.place(relx=0.5, rely=base_y, anchor="center")
+        self.email_entry.place(relx=0.5, rely=base_y + vertical_spacing, anchor="center")
+        self.password_entry.place(relx=0.5, rely=base_y + vertical_spacing * 2, anchor="center")
+
+        self.security_question_one.config(width=60)
+        self.security_question_two.config(width=60)
+
+        self.security_question_one.place(relx=0.5, rely=base_y + vertical_spacing * 3.2, anchor="center")
+        self.security_entry_one.place(relx=0.5, rely=base_y + vertical_spacing * 3.9, anchor="center")
+
+        self.security_question_two.place(relx=0.5, rely=base_y + vertical_spacing * 4.6, anchor="center")
+        self.security_entry_two.place(relx=0.5, rely=base_y + vertical_spacing * 5.3, anchor="center")
+
+        self.reset_button.place(relx=0.42, rely=base_y + vertical_spacing * 6.2, anchor="center")
+        self.back_button.place(relx=0.58, rely=base_y + vertical_spacing * 6.2, anchor="center")
+
