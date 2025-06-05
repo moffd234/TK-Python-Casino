@@ -4,7 +4,6 @@ from typing import TYPE_CHECKING
 from Application.Model.Accounts.UserAccount import UserAccount
 from Application.Utils.PlaceholderEntry import PlaceholderEntry as pEntry
 from Application.View.BaseFrame import BaseFrame
-from Application.View.EntryFrame import EntryFrame
 from Application.View.LoginFrame import LoginFrame
 from Application.View.PasswordResetFrame import PasswordResetFrame
 
@@ -81,7 +80,7 @@ class AccountValidationFrame(BaseFrame):
         self.auth_entry.place(relx=0.5, rely=0.5, anchor="center")
 
     def validate_auth_token(self) -> None:
-        if self.auth_entry.get().strip() == str(self.account.reset_token):
+        if self.auth_entry.get() == str(self.account.reset_token):
             self.controller.render_frame(PasswordResetFrame)
         else:
             self.error_label.configure(text="Incorrect auth token", foreground="red")
