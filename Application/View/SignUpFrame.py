@@ -1,6 +1,7 @@
 from tkinter import ttk
 from typing import TYPE_CHECKING
 
+from Application.Casino.Casino import is_password_valid, is_email_valid
 from Application.Utils.PlaceholderEntry import PlaceholderEntry as pEntry
 from Application.View.BaseFrame import BaseFrame
 
@@ -46,6 +47,10 @@ class SignUpFrame(BaseFrame):
         self.reset_button: ttk.Button = ttk.Button(self, text="Signup", command="")
         self.back_button: ttk.Button = ttk.Button(self, text="Back", command="")
 
+        self.elements: list = [self.username_entry, self.password_entry, self.email_entry,
+                               self.security_question_one, self.security_question_two,
+                               self.security_question_one, self.security_entry_two]
+
         self.place_elements()
 
     def place_elements(self):
@@ -68,3 +73,19 @@ class SignUpFrame(BaseFrame):
         self.reset_button.place(relx=0.42, rely=base_y + vertical_spacing * 6.2, anchor="center")
         self.back_button.place(relx=0.58, rely=base_y + vertical_spacing * 6.2, anchor="center")
 
+    def validate_fields(self) -> tuple[bool, str | None]:
+        for element in self.elements:
+            if not element.get().strip():
+                return False, "All Fields Must Be Filled"
+
+        if self.security_question_one.get() == self.security_question_two.get():
+            return False, "Security Answers Must Be Different"
+
+        if not is_password_valid(self.password_entry.get()):
+            return False, ("Password must include 1 special character,"
+                           " 1 number, 1 lowercase letter and 1 uppercase letter")
+
+        if not is_email_valid(self.email_entry.get()):
+            return False, "Email Must Be Valid"
+
+        return True, None
