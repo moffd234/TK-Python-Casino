@@ -40,3 +40,12 @@ class PlaceholderEntry(tkinter.Entry):
         """
         if not self.get():
             self.put_placeholder()
+
+    def get_real_value(self) -> str:
+        """
+        Returns the actual user input from the entry field, excluding placeholder text.
+
+        :return: The input string, or an empty string if the entry contains only the placeholder.
+        """
+        value = self.get()
+        return "" if value == self.placeholder else value
