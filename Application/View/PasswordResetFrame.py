@@ -1,9 +1,10 @@
-from tkinter import ttk
+from tkinter import ttk, Entry
 from typing import TYPE_CHECKING
 
 from Application.Controller.AccountController import is_password_valid
 from Application.Utils.PlaceholderEntry import PlaceholderEntry as pEntry
 from Application.View.BaseFrame import BaseFrame
+from Application.View.EntryFrame import EntryFrame
 
 if TYPE_CHECKING:
     from Application.Controller.MainWindow import MainWindow
@@ -15,7 +16,7 @@ class PasswordResetFrame(BaseFrame):
 
         style: ttk.Style = ttk.Style()
         style.configure(style="Title.TLabel", font=("TkDefaultFont", 25))
-        self.info_label: ttk.Label = ttk.Label(text="Enter your new password.", style="Title.TLabel")
+        self.info_label: ttk.Label = ttk.Label(self, text="Enter your new password.", style="Title.TLabel")
 
         self.password_entry: pEntry = pEntry(self, "Enter New Password", width=50)
         self.confirm_entry: pEntry = pEntry(self, "Confirm Password", width=50)
@@ -47,3 +48,4 @@ class PasswordResetFrame(BaseFrame):
             return
 
         self.controller.account_controller.reset_password(new_password)
+        self.controller.render_frame(EntryFrame)
