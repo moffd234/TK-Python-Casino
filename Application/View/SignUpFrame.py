@@ -39,8 +39,10 @@ class SignUpFrame(BaseFrame):
         self.security_entry_one: pEntry = pEntry(self, "Security Answer", width=50)
         self.security_entry_two: pEntry = pEntry(self, "Security Answer", width=50)
 
-        self.security_question_one: ttk.Combobox = ttk.Combobox(self, values=possible_questions, state="readonly", width=60)
-        self.security_question_two: ttk.Combobox = ttk.Combobox(self, values=possible_questions, state="readonly", width=60)
+        self.security_question_one: ttk.Combobox = ttk.Combobox(self, values=possible_questions, state="readonly",
+                                                                width=60)
+        self.security_question_two: ttk.Combobox = ttk.Combobox(self, values=possible_questions, state="readonly",
+                                                                width=60)
         self.security_question_one.set(possible_questions[0])
         self.security_question_two.set(possible_questions[1])
 
@@ -74,6 +76,20 @@ class SignUpFrame(BaseFrame):
         self.back_button.place(relx=0.58, rely=base_y + vertical_spacing * 6.2, anchor="center")
 
     def validate_fields(self) -> tuple[bool, str | None]:
+        """
+        Validates that all required fields in the sign-up form are properly filled.
+
+        This includes:
+        - Ensuring no fields are left blank or contain only whitespace.
+        - Ensuring the two selected security questions are different.
+        - Validating that the password meets complexity requirements.
+        - Validating the format of the provided email address.
+
+        :return: A tuple (is_valid, error_message):
+            - is_valid (bool): True if all validations pass, otherwise False.
+            - error_message (str | None): The associated error message if validation fails, or None if successful.
+        """
+
         for element in self.elements:
             if not element.get().strip():
                 return False, "All Fields Must Be Filled"
