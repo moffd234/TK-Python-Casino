@@ -40,6 +40,8 @@ class SignUpFrame(BaseFrame):
 
         self.security_question_one: ttk.Combobox = ttk.Combobox(self, values=possible_questions, state="readonly", width=60)
         self.security_question_two: ttk.Combobox = ttk.Combobox(self, values=possible_questions, state="readonly", width=60)
+        self.security_question_one.set(possible_questions[0])
+        self.security_question_two.set(possible_questions[1])
 
         self.reset_button: ttk.Button = ttk.Button(self, text="Signup", command="")
         self.back_button: ttk.Button = ttk.Button(self, text="Back", command="")
