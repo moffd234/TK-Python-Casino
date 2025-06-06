@@ -4,6 +4,7 @@ from typing import TYPE_CHECKING
 from Application.Casino.Casino import is_password_valid, is_email_valid
 from Application.Utils.PlaceholderEntry import PlaceholderEntry as pEntry
 from Application.View.BaseFrame import BaseFrame
+from Application.View.MainMenuFrame import MainMenuFrame
 
 if TYPE_CHECKING:
     from Application.Controller.MainWindow import MainWindow
@@ -46,12 +47,11 @@ class SignUpFrame(BaseFrame):
         self.security_question_one.set(possible_questions[0])
         self.security_question_two.set(possible_questions[1])
 
-        self.reset_button: ttk.Button = ttk.Button(self, text="Signup", command="")
+        self.signup: ttk.Button = ttk.Button(self, text="Signup", command=self.signup)
         self.back_button: ttk.Button = ttk.Button(self, text="Back", command="")
 
         self.elements: list = [self.username_entry, self.password_entry, self.email_entry,
-                               self.security_question_one, self.security_question_two,
-                               self.security_question_one, self.security_entry_two]
+                               self.security_entry_one, self.security_entry_two]
 
         self.place_elements()
 
@@ -72,7 +72,7 @@ class SignUpFrame(BaseFrame):
         self.security_question_two.place(relx=0.5, rely=base_y + vertical_spacing * 4.6, anchor="center")
         self.security_entry_two.place(relx=0.5, rely=base_y + vertical_spacing * 5.3, anchor="center")
 
-        self.reset_button.place(relx=0.42, rely=base_y + vertical_spacing * 6.2, anchor="center")
+        self.signup.place(relx=0.42, rely=base_y + vertical_spacing * 6.2, anchor="center")
         self.back_button.place(relx=0.58, rely=base_y + vertical_spacing * 6.2, anchor="center")
 
     def validate_fields(self) -> tuple[bool, str | None]:
@@ -91,7 +91,7 @@ class SignUpFrame(BaseFrame):
         """
 
         for element in self.elements:
-            if not element.get().strip():
+            if element.get_real_value() == "":
                 return False, "All Fields Must Be Filled"
 
         if self.security_question_one.get() == self.security_question_two.get():
@@ -105,3 +105,39 @@ class SignUpFrame(BaseFrame):
             return False, "Email Must Be Valid"
 
         return True, None
+
+    def signup(self) -> None:
+        """
+        Handles the sign-up process for a new user.
+
+        This method performs the following:
+        - Validates that all required fields are filled and correctly formatted.
+        - Extracts user input from form fields.
+        - Sends the data to the AccountController to attempt account creation.
+        - Displays an error message if validation or account creation fails.
+        - Transitions to the MainMenuFrame upon successful sign-up.
+
+        :return: None
+        """
+        self.error_label.place_forget()
+        is_valid, error_message = self.validate_fields()
+
+        if not is_valid:
+            self.error_label.config(text=error_message)
+            self.error_label.place(relx=0.5, rely=0.15, anchor="center")
+            return
+
+        username: str = self.username_entry.get_real_value().strip()
+        password: str = self.password_entry.get_real_value().strip()
+        email: str = self.email_entry.get_real_value().strip()
+        questions: list[str] = [self.security_question_one.get().strip(), self.security_entry_one.get().strip(),
+                                self.security_question_two.get().strip(), self.security_entry_two.get().strip()]
+
+        is_valid, error_message = self.controller.account_controller.create_account(username, password, email, questions)
+
+        if not is_valid:
+            self.error_label.config(text=error_message)
+            self.error_label.place(relx=0.5, rely=0.15, anchor="center")
+            return
+
+        self.controller.render_frame(MainMenuFrame)
