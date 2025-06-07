@@ -7,3 +7,5 @@ class MainMenuFrame(BaseFrame):
         super().__init__(parent, controller)
         self.controller = controller
 
+    def place_elements(self):
+        pass
