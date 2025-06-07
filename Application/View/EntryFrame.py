@@ -21,12 +21,14 @@ class EntryFrame(BaseFrame):
         style.configure(style="Title.TLabel", font=("TkDefaultFont", 25))
         self.title_label: ttk.Label = ttk.Label(self, text="Welcome to Python Casino 🎰🎰🎰", style="Title.TLabel")
 
-        self.title_label.place(relx=0.5, rely=0.25, anchor="center")
-        self.login_button.place(relx=0.4, rely=0.5, anchor="center")
-        self.signup_button.place(relx=0.6, rely=0.5, anchor="center")
 
     def login(self) -> None:
         self.controller.render_frame(LoginFrame)
 
     def signup(self) -> None:
         self.controller.render_frame(SignUpFrame)
+
+    def place_elements(self):
+        self.title_label.place(relx=0.5, rely=0.25, anchor="center")
+        self.login_button.place(relx=0.4, rely=0.5, anchor="center")
+        self.signup_button.place(relx=0.6, rely=0.5, anchor="center")
