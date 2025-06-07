@@ -31,7 +31,7 @@ class AccountValidationFrame(BaseFrame):
 
         self.place()
 
-    def place(self) -> None:
+    def place_elements(self) -> None:
         self.email_entry.place(relx=0.5, rely=0.5, anchor="center")
         self.validate_button.place(relx=0.4, rely=0.65, anchor="center")
         self.back_button.place(relx=0.6, rely=0.65, anchor="center")
