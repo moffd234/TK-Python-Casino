@@ -55,7 +55,7 @@ class SignUpFrame(BaseFrame):
 
         self.place_elements()
 
-    def place_elements(self):
+    def place_elements(self) -> None:
         vertical_spacing = 0.08
         base_y = 0.28
 
