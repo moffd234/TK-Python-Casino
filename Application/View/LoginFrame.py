@@ -22,9 +22,6 @@ class LoginFrame(BaseFrame):
         self.login_button: ttk.Button = ttk.Button(self, text="Login", command=self.login)
         self.back_button: ttk.Button = ttk.Button(self, text="Back", command=self.transition_back)
 
-        # Do not place this until error occurs
-        self.error_label: ttk.Label = ttk.Label(self, text="Incorrect username or password", foreground="red")
-
         self.place_elements()
 
     def login(self) -> None:
@@ -37,6 +34,7 @@ class LoginFrame(BaseFrame):
             self.controller.render_frame(MainMenuFrame)
 
         else:
+            self.error_label.configure(text="Invalid username or password")
             self.error_label.place(relx=0.5, rely=0.5, anchor="center")
 
     def transition_back(self) -> None:
