@@ -4,7 +4,6 @@ from typing import TYPE_CHECKING
 from Application.Casino.Casino import is_password_valid, is_email_valid
 from Application.Utils.PlaceholderEntry import PlaceholderEntry as pEntry
 from Application.View.BaseFrame import BaseFrame
-from Application.View.EntryFrame import EntryFrame
 from Application.View.MainMenuFrame import MainMenuFrame
 
 if TYPE_CHECKING:
@@ -148,4 +147,6 @@ class SignUpFrame(BaseFrame):
         Transitions user back to the EntryFrame
         :return: None
         """
+        from Application.View.EntryFrame import EntryFrame
+
         self.controller.render_frame(EntryFrame)
