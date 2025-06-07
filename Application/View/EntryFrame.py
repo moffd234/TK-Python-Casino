@@ -21,6 +21,8 @@ class EntryFrame(BaseFrame):
         style.configure(style="Title.TLabel", font=("TkDefaultFont", 25))
         self.title_label: ttk.Label = ttk.Label(self, text="Welcome to Python Casino 🎰🎰🎰", style="Title.TLabel")
 
+        self.place_elements()
+
 
     def login(self) -> None:
         self.controller.render_frame(LoginFrame)
