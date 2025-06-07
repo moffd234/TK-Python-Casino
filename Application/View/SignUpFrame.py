@@ -4,6 +4,7 @@ from typing import TYPE_CHECKING
 from Application.Casino.Casino import is_password_valid, is_email_valid
 from Application.Utils.PlaceholderEntry import PlaceholderEntry as pEntry
 from Application.View.BaseFrame import BaseFrame
+from Application.View.EntryFrame import EntryFrame
 from Application.View.MainMenuFrame import MainMenuFrame
 
 if TYPE_CHECKING:
@@ -48,7 +49,7 @@ class SignUpFrame(BaseFrame):
         self.security_question_two.set(possible_questions[1])
 
         self.signup: ttk.Button = ttk.Button(self, text="Signup", command=self.signup)
-        self.back_button: ttk.Button = ttk.Button(self, text="Back", command="")
+        self.back_button: ttk.Button = ttk.Button(self, text="Back", command=self.transition_back)
 
         self.elements: list = [self.username_entry, self.password_entry, self.email_entry,
                                self.security_entry_one, self.security_entry_two]
@@ -141,3 +142,10 @@ class SignUpFrame(BaseFrame):
             return
 
         self.controller.render_frame(MainMenuFrame)
+
+    def transition_back(self) -> None:
+        """
+        Transitions user back to the EntryFrame
+        :return: None
+        """
+        self.controller.render_frame(EntryFrame)
