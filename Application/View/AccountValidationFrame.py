@@ -74,8 +74,8 @@ class AccountValidationFrame(BaseFrame):
             self.error_label.configure(text="Incorrect security answers")
 
     def place_auth_token(self) -> None:
-        self.error_label.configure(text="Auth Token Has Been Emailed", foreground="green")
-        self.error_label.place(relx=0.5, rely=0.15, anchor="center")
+        self.success_label.configure(text="Auth Token Has Been Emailed")
+        self.success_label.place(relx=0.5, rely=0.15, anchor="center")
         self.auth_entry.place(relx=0.5, rely=0.5, anchor="center")
 
     def validate_auth_token(self) -> None:
