@@ -1,3 +1,4 @@
+from abc import ABC, abstractmethod
 from tkinter import ttk
 from typing import TYPE_CHECKING
 
@@ -5,7 +6,7 @@ if TYPE_CHECKING:
     from Application.Controller.MainWindow import MainWindow
 
 
-class BaseFrame(ttk.Frame):
+class BaseFrame(ttk.Frame, ABC):
     """
     Parent class of all the frames used in the application.
     """
@@ -16,3 +17,7 @@ class BaseFrame(ttk.Frame):
 
         self.error_label: ttk.Label = ttk.Label(self, foreground="red")
         self.success_label: ttk.Label = ttk.Label(self, foreground="green")
+
+    @abstractmethod
+    def place_elements(self):
+        pass
