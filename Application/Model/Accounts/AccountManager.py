@@ -16,6 +16,7 @@ def hash_password(password: str) -> str:
     hashed_password: bytes = bcrypt.hashpw(encoded_bytes, salt)
     return hashed_password.decode('utf-8')
 
+
 def verify_password(password: str, hashed: str) -> bool:
     return bcrypt.checkpw(password.encode('utf-8'), hashed.encode('utf-8'))
 
@@ -23,6 +24,7 @@ def verify_password(password: str, hashed: str) -> bool:
 class AccountManager:
     def __init__(self, session=None):
         self.session: Session = session or init_db()
+        self.logger: logging.Logger = logging.getLogger("account.auth")
 
     def create_account(self, username: str, password: str, email: str, questions: list[str]) -> UserAccount | None:
         """
@@ -49,7 +51,7 @@ class AccountManager:
         user = UserAccount(username, hashed_password, 50.0, email, questions)
         self.session.add(user)
         self.session.commit()
-        logging.debug(f"Created new user account. With username: {username}")
+        self.logger.info(f"Created new user account. With username: {username}")
         return user
 
     def get_account(self, username: str, password: str) -> UserAccount | None:
