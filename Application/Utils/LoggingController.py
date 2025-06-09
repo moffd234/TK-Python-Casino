@@ -2,7 +2,8 @@ import logging
 import os
 from logging import FileHandler, Formatter, basicConfig
 
-PARENT_DIR = "logs"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath("Application")))
+PARENT_DIR = os.path.join(BASE_DIR, "logs")
 
 
 def setup_logging() -> None:
