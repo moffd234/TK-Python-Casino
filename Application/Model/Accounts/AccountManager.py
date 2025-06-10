@@ -82,7 +82,9 @@ class AccountManager:
     def update_password(self, account: UserAccount, new_password: str) -> None:
         hashed_password: str = hash_password(new_password)
         account.password = hashed_password
+        self.logger.info(f"Updated password for {account.username}")
         self.session.commit()
+        self.logger.info(f"Account saved with username {account.username}")
 
     def generate_uuid_and_store_it(self, account: UserAccount) -> str:
         token: uuid = uuid.uuid4()
