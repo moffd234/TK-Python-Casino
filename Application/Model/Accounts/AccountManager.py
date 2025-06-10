@@ -50,8 +50,10 @@ class AccountManager:
 
         hashed_password: str = hash_password(password)
         user = UserAccount(username, hashed_password, 50.0, email, questions)
+
         self.session.add(user)
         self.session.commit()
+
         self.logger.info(f"Created new user account. With username: {username}")
         return user
 
@@ -59,7 +61,7 @@ class AccountManager:
         user: Optional[UserAccount] = self.session.query(UserAccount).filter_by(username=username).first()
 
         if user is not None and verify_password(password, user.password):
-            self.logger.debug(f"Account found with username {username} and provided password")
+            self.logger.info(f"Account found with username {username} and provided password")
             return user
 
         self.logger.warning(f"Account not found with username {username} and provided password")
@@ -67,7 +69,9 @@ class AccountManager:
 
     def add_and_save_account(self, account: UserAccount, wager: float) -> None:
         account.add_winnings(wager)
+        self.logger.info(f"{account.username} added winning {wager}")
         self.session.commit()
+        self.logger.info(f"Account saved with username {account.username}")
 
     def subtract_and_save_account(self, account: UserAccount, wager: float) -> None:
         account.subtract_losses(wager)
