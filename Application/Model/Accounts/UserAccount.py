@@ -1,3 +1,5 @@
+import logging
+
 from Application.Model.Accounts.db import Base
 from sqlalchemy import Column, String, Float, DateTime, UUID
 
@@ -17,6 +19,8 @@ class UserAccount(Base):
         self.reset_token = None
         self.reset_token_expiration = None
 
+        self.logger: logging.Logger = logging.getLogger("database")
+
     __tablename__ = 'user_account'
 
     username = Column(String, primary_key=True, nullable=False)
@@ -33,11 +37,14 @@ class UserAccount(Base):
 
     def subtract_losses(self, wager: float) -> None:
         if wager <= 0:
+            self.logger.error(f"Non-positive wager attempted by {self.username}: wager={wager}")
             raise ValueError("Wager must be positive")
         if wager > self.balance:
+            self.logger.error(f"Non-positive wager attempted by {self.username}: wager={wager}")
             raise ValueError(f"Insufficient funds! Available: {self.balance}, Tried to subtract: {wager}")
 
         self.balance -= wager
+        self.logger.info(f"{self.username} lost {wager}. New balance: {self.balance}")
 
     def add_winnings(self, wager: float) -> None:
         if wager <= 0:
