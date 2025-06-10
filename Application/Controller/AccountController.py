@@ -75,7 +75,7 @@ class AccountController:
         self.account = self.manager.create_account(username, password, email, security_questions)
 
         if not self.account:
-            return False, "Account with that username already exists"
+            return False, "Account with that username or email already exists"
 
         return True, None
 
