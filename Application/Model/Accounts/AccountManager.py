@@ -4,6 +4,7 @@ import smtplib
 from typing import Optional
 import bcrypt
 from sqlalchemy.orm import Session
+from sqlalchemy import or_
 import uuid
 
 from Application.Model.Accounts.UserAccount import UserAccount
@@ -30,8 +31,9 @@ class AccountManager:
         """
         Attempts to create a new user account with the provided credentials and security questions.
 
-        Checks if a user with the given username already exists in the database. If the username is unique, a new
-        UserAccount is created with a default balance of $50.00, added to the session, and committed to the database.
+        Checks if a user with the given username and email already exists in the database. If the username and email is
+         unique, a new UserAccount is created with a default balance of $50.00, added to the session,
+         and committed to the database.
 
         Args:
             username (str): The desired username for the new account.
@@ -42,7 +44,9 @@ class AccountManager:
         Returns:
                 UserAccount | None: The newly created UserAccount object if successful, or None if the username is already taken.
         """
-        user: Optional[UserAccount] = self.session.query(UserAccount).filter_by(username=username).first()
+        # Check is username or email already exists in db
+        user: Optional[UserAccount] = self.session.query(UserAccount).filter(or_(UserAccount.username == username,
+                                                                                 UserAccount.email == email)).first()
 
         if user:
             self.logger.warning(f"Account Creation failed. User {username} already exists in the database.")
