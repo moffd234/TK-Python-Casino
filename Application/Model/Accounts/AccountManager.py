@@ -91,9 +91,12 @@ class AccountManager:
         token_expiration: datetime = datetime.datetime.now(datetime.UTC) + datetime.timedelta(minutes=15)
 
         account.reset_token = token
+        self.logger.info(f"Generated new uuid token for {account.username}")
         account.reset_token_expiration = token_expiration
+        self.logger.info(f"Generated new uuid token expiration for {account.username}")
 
         self.session.commit()
+        self.logger.info(f"Account saved with username {account.username}")
         return str(token)
 
     def invalidate_reset_token(self, account: UserAccount):
