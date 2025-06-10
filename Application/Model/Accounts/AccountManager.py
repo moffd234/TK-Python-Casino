@@ -75,7 +75,9 @@ class AccountManager:
 
     def subtract_and_save_account(self, account: UserAccount, wager: float) -> None:
         account.subtract_losses(wager)
+        self.logger.info(f"{account.username} subtracted losses {wager}")
         self.session.commit()
+        self.logger.info(f"Account saved with username {account.username}")
 
     def update_password(self, account: UserAccount, new_password: str) -> None:
         hashed_password: str = hash_password(new_password)
