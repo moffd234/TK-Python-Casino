@@ -102,7 +102,9 @@ class AccountManager:
     def invalidate_reset_token(self, account: UserAccount):
         account.reset_token = None
         account.reset_token_expiration = None
+        self.logger.info(f"Invalidated token and expiration for {account.username}")
         self.session.commit()
+        self.logger.info(f"Account saved with username {account.username}")
 
     def email_recovery_token(self, account: UserAccount) -> None:
         from os import getenv
