@@ -45,6 +45,7 @@ class AccountManager:
         user: Optional[UserAccount] = self.session.query(UserAccount).filter_by(username=username).first()
 
         if user:
+            self.logger.warning(f"Account Creation failed. User {username} already exists in the database.")
             return None
 
         hashed_password: str = hash_password(password)
