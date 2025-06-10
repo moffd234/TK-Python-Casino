@@ -48,9 +48,11 @@ class UserAccount(Base):
 
     def add_winnings(self, wager: float) -> None:
         if wager <= 0:
+            self.logger.error(f"Non-positive wager attempted by {self.username}: wager={wager}")
             raise ValueError("Wager must be positive")
 
         self.balance += wager
+        self.logger.info(f"{self.username} won {wager}. New balance: {self.balance}")
 
     def __repr__(self):
         return f"Username: {self.username} Balance: {self.balance}"
