@@ -35,3 +35,8 @@ def setup_logging() -> None:
     auth_logger.addHandler(auth_handler)
     auth_logger.setLevel(logging.INFO)
     auth_logger.propagate = False
+
+    db_logger = logging.getLogger("database")
+    db_logger.addHandler(db_handler)
+    db_logger.setLevel(logging.INFO)
+    db_logger.propagate = False
