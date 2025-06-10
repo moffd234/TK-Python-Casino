@@ -70,12 +70,14 @@ class AccountManager:
     def add_and_save_account(self, account: UserAccount, wager: float) -> None:
         account.add_winnings(wager)
         self.logger.info(f"{account.username} added winning {wager}")
+
         self.session.commit()
         self.logger.info(f"Account saved with username {account.username}")
 
     def subtract_and_save_account(self, account: UserAccount, wager: float) -> None:
         account.subtract_losses(wager)
         self.logger.info(f"{account.username} subtracted losses {wager}")
+
         self.session.commit()
         self.logger.info(f"Account saved with username {account.username}")
 
@@ -83,6 +85,7 @@ class AccountManager:
         hashed_password: str = hash_password(new_password)
         account.password = hashed_password
         self.logger.info(f"Updated password for {account.username}")
+
         self.session.commit()
         self.logger.info(f"Account saved with username {account.username}")
 
@@ -103,6 +106,7 @@ class AccountManager:
         account.reset_token = None
         account.reset_token_expiration = None
         self.logger.info(f"Invalidated token and expiration for {account.username}")
+
         self.session.commit()
         self.logger.info(f"Account saved with username {account.username}")
 
@@ -126,6 +130,7 @@ class AccountManager:
                          f"Please paste it in the prompt on the application:\n\n{token}")
             message = f"Subject: {subject}\n\n{body}"
             smtp.sendmail(username, account.email, message)
+            self.logger.info(f"Email sent to {account.email}")
 
     def get_account_by_email(self, email: str) -> UserAccount | None:
         """
