@@ -59,8 +59,10 @@ class AccountManager:
         user: Optional[UserAccount] = self.session.query(UserAccount).filter_by(username=username).first()
 
         if user is not None and verify_password(password, user.password):
+            self.logger.debug(f"Account found with username {username} and provided password")
             return user
 
+        self.logger.warning(f"Account not found with username {username} and provided password")
         return None
 
     def add_and_save_account(self, account: UserAccount, wager: float) -> None:
