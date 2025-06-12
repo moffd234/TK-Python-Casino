@@ -60,6 +60,10 @@ class MainWindow(tk.Tk):
         self.configure(menu=self.menu_bar)
 
     def transition_to_password_reset(self):
+        """
+        Transitions to PasswordResetFrame
+        :return: None
+        """
         self.render_frame(PasswordResetFrame)
 
 if __name__ == "__main__":
