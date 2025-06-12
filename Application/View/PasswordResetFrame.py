@@ -28,7 +28,7 @@ class PasswordResetFrame(BaseFrame):
 
         self.place()
 
-    def place(self) -> None:
+    def place_elements(self) -> None:
         self.info_label.place(relx=0.5, rely=0.35, anchor="center")
         self.password_entry.place(relx=0.5, rely=0.45, anchor="center")
         self.confirm_entry.place(relx=0.5, rely=0.55, anchor="center")
