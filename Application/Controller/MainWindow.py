@@ -26,7 +26,7 @@ class MainWindow(tk.Tk):
         self.empty_menu: tk.Menu = tk.Menu()
         self.create_menu()
 
-        self.render_frame(EntryFrame, show_menu=False)
+        self.render_frame(EntryFrame, )  # show_menu=False)
 
     def render_frame(self, new_frame: type[BaseFrame], show_menu: bool = True, **kwargs) -> None:
         """
@@ -51,13 +51,19 @@ class MainWindow(tk.Tk):
         # Account Menu
         account_menu: tk.Menu = tk.Menu(self.menu_bar, tearoff=False)
         self.menu_bar.add_cascade(label="Account", menu=account_menu)
-        account_menu.add_command(label="Reset Password", command=self.transition_to_password_reset)
-        account_menu.add_command(label="Manage Security Questions", command="")
         account_menu.add_command(label="Add Funds", command="")
+        account_menu.add_command(label="Manage Security Questions", command="")
+        account_menu.add_command(label="Reset Password", command=self.transition_to_password_reset)
 
         # Game Menu
         game_menu: tk.Menu = tk.Menu(self.menu_bar, tearoff=False)
         self.menu_bar.add_cascade(label="Games", menu=game_menu)
+        game_menu.add_command(label="Coin Flip", command="")
+        game_menu.add_command(label="Number Guess", command="")
+        game_menu.add_command(label="RPS", command="")
+        game_menu.add_command(label="Slots", command="")
+        game_menu.add_command(label="TicTacToe", command="")
+        game_menu.add_command(label="Trivia", command="")
 
         self.configure(menu=self.menu_bar)
 
@@ -67,6 +73,7 @@ class MainWindow(tk.Tk):
         :return: None
         """
         self.render_frame(PasswordResetFrame)
+
 
 if __name__ == "__main__":
     app = MainWindow()
