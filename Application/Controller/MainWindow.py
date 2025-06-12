@@ -28,14 +28,17 @@ class MainWindow(tk.Tk):
 
         self.render_frame(EntryFrame)
 
-    def render_frame(self, new_frame: type[BaseFrame], draw_menu: bool = True, **kwargs) -> None:
+    def render_frame(self, new_frame: type[BaseFrame], show_menu: bool = True, **kwargs) -> None:
         """
         Destroys previous frame and renders new frame.
         :param new_frame: A new Frame object.
+        :param show_menu: A boolean representing whether to show the menu.
         :return: None
         """
         for frame in self.container.winfo_children():
             frame.destroy()
+
+        self.config(menu=self.menu_bar if show_menu else self.empty_menu)
 
         frame: ttk.Frame = new_frame(self.container, self, **kwargs)
         frame.pack(fill="both", expand=True)
@@ -58,7 +61,6 @@ class MainWindow(tk.Tk):
 
     def transition_to_password_reset(self):
         self.render_frame(PasswordResetFrame)
-
 
 if __name__ == "__main__":
     app = MainWindow()
