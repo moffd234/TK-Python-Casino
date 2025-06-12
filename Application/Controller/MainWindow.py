@@ -23,6 +23,7 @@ class MainWindow(tk.Tk):
         self.container.pack(fill="both", expand=True)
 
         self.menu_bar: tk.Menu = tk.Menu()
+        self.empty_menu: tk.Menu = tk.Menu()
         self.create_menu()
 
         self.render_frame(EntryFrame)
