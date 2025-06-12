@@ -25,10 +25,10 @@ class EntryFrame(BaseFrame):
 
 
     def login(self) -> None:
-        self.controller.render_frame(LoginFrame)
+        self.controller.render_frame(LoginFrame, show_menu=False)
 
     def signup(self) -> None:
-        self.controller.render_frame(SignUpFrame)
+        self.controller.render_frame(SignUpFrame, show_menu=False)
 
     def place_elements(self):
         self.title_label.place(relx=0.5, rely=0.25, anchor="center")

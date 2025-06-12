@@ -50,10 +50,10 @@ class PasswordResetFrame(BaseFrame):
             return
 
         self.controller.account_controller.reset_password(new_password)
-        self.controller.render_frame(EntryFrame)
+        self.controller.render_frame(EntryFrame, show_menu=False)
 
     def go_back(self) -> None:
         if self.prev_frame == EntryFrame:
-            self.controller.render_frame(EntryFrame)
+            self.controller.render_frame(EntryFrame, show_menu=False)
         else:
             self.controller.render_frame(MainMenuFrame)

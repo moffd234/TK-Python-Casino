@@ -80,10 +80,10 @@ class AccountValidationFrame(BaseFrame):
 
     def validate_auth_token(self) -> None:
         if self.auth_entry.get() == str(self.account.reset_token):
-            self.controller.render_frame(PasswordResetFrame)
+            self.controller.render_frame(PasswordResetFrame, return_value=False)
         else:
             self.error_label.configure(text="Incorrect auth token", foreground="red")
             self.error_label.place()
 
     def transition_back(self):
-        self.controller.render_frame(LoginFrame)
+        self.controller.render_frame(LoginFrame, show_menu=False)

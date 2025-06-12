@@ -39,11 +39,11 @@ class LoginFrame(BaseFrame):
 
     def transition_back(self) -> None:
         from Application.View.EntryFrame import EntryFrame
-        self.controller.render_frame(EntryFrame)
+        self.controller.render_frame(EntryFrame, show_menu=False)
 
     def transition_to_validation(self) -> None:
         from Application.View.AccountValidationFrame import AccountValidationFrame
-        self.controller.render_frame(AccountValidationFrame)
+        self.controller.render_frame(AccountValidationFrame, show_menu=False)
 
     def place_elements(self) -> None:
         self.username_entry.place(relx=0.5, rely=0.35, anchor="center")

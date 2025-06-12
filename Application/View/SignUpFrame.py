@@ -149,4 +149,4 @@ class SignUpFrame(BaseFrame):
         """
         from Application.View.EntryFrame import EntryFrame
 
-        self.controller.render_frame(EntryFrame)
+        self.controller.render_frame(EntryFrame, show_menu=False)

@@ -26,7 +26,7 @@ class MainWindow(tk.Tk):
         self.empty_menu: tk.Menu = tk.Menu()
         self.create_menu()
 
-        self.render_frame(EntryFrame)
+        self.render_frame(EntryFrame, show_menu=False)
 
     def render_frame(self, new_frame: type[BaseFrame], show_menu: bool = True, **kwargs) -> None:
         """
