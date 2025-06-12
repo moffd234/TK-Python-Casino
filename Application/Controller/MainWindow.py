@@ -28,7 +28,7 @@ class MainWindow(tk.Tk):
 
         self.render_frame(EntryFrame)
 
-    def render_frame(self, new_frame: type[BaseFrame], **kwargs) -> None:
+    def render_frame(self, new_frame: type[BaseFrame], draw_menu: bool = True, **kwargs) -> None:
         """
         Destroys previous frame and renders new frame.
         :param new_frame: A new Frame object.
@@ -40,7 +40,11 @@ class MainWindow(tk.Tk):
         frame: ttk.Frame = new_frame(self.container, self, **kwargs)
         frame.pack(fill="both", expand=True)
 
-    def create_menu(self):
+    def create_menu(self) -> None:
+        """
+        Creates the top menu bar for easier application navigation.
+        :return: None
+        """
         # Account Menu
         account_menu: tk.Menu = tk.Menu(self.menu_bar, tearoff=False)
         self.menu_bar.add_cascade(label="Account", menu=account_menu)
@@ -54,6 +58,7 @@ class MainWindow(tk.Tk):
 
     def transition_to_password_reset(self):
         self.render_frame(PasswordResetFrame)
+
 
 if __name__ == "__main__":
     app = MainWindow()
