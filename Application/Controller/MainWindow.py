@@ -52,6 +52,8 @@ class MainWindow(tk.Tk):
         account_menu: tk.Menu = tk.Menu(self.menu_bar, tearoff=False)
         self.menu_bar.add_cascade(label="Account", menu=account_menu)
         account_menu.add_command(label="Reset Password", command=self.transition_to_password_reset)
+        account_menu.add_command(label="Manage Security Questions", command="")
+        account_menu.add_command(label="Add Funds", command="")
 
         # Game Menu
         game_menu: tk.Menu = tk.Menu(self.menu_bar, tearoff=False)
