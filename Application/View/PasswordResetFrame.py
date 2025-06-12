@@ -26,7 +26,7 @@ class PasswordResetFrame(BaseFrame):
         self.reset_button: ttk.Button = ttk.Button(self, text="Reset", command=self.reset_password)
         self.back_button: ttk.Button = ttk.Button(self, text="Back", command=self.go_back)
 
-        self.place()
+        self.place_elements()
 
     def place_elements(self) -> None:
         self.info_label.place(relx=0.5, rely=0.35, anchor="center")
