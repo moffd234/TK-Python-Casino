@@ -6,6 +6,7 @@ from Application.Utils.LoggingController import setup_logging
 from Application.Model.Accounts.AccountManager import AccountManager
 from Application.View.BaseFrame import BaseFrame
 from Application.View.EntryFrame import EntryFrame
+from Application.View.PasswordResetFrame import PasswordResetFrame
 
 setup_logging()
 
@@ -20,10 +21,11 @@ class MainWindow(tk.Tk):
 
         self.container: ttk.Frame = ttk.Frame(self)
         self.container.pack(fill="both", expand=True)
+
+        self.menu_bar: tk.Menu = tk.Menu()
         self.create_menu()
 
         self.render_frame(EntryFrame)
-        # self.render_frame(MainMenuFrame)
 
     def render_frame(self, new_frame: type[BaseFrame], **kwargs) -> None:
         """
@@ -38,17 +40,19 @@ class MainWindow(tk.Tk):
         frame.pack(fill="both", expand=True)
 
     def create_menu(self):
-        menu_bar: tk.Menu = tk.Menu()
-
         # Account Menu
-        account_menu: tk.Menu = tk.Menu(menu_bar, tearoff=False)
-        menu_bar.add_cascade(label="Account", menu=account_menu)
+        account_menu: tk.Menu = tk.Menu(self.menu_bar, tearoff=False)
+        self.menu_bar.add_cascade(label="Account", menu=account_menu)
+        account_menu.add_command(label="Reset Password", command=self.transition_to_password_reset)
 
         # Game Menu
-        game_menu: tk.Menu = tk.Menu(menu_bar, tearoff=False)
-        menu_bar.add_cascade(label="Games", menu=game_menu)
+        game_menu: tk.Menu = tk.Menu(self.menu_bar, tearoff=False)
+        self.menu_bar.add_cascade(label="Games", menu=game_menu)
 
-        self.configure(menu=menu_bar)
+        self.configure(menu=self.menu_bar)
+
+    def transition_to_password_reset(self):
+        self.render_frame(PasswordResetFrame)
 
 if __name__ == "__main__":
     app = MainWindow()
