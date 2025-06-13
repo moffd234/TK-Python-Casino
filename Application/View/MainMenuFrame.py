@@ -8,9 +8,10 @@ class MainMenuFrame(BaseFrame):
     def __init__(self, parent, controller):
         super().__init__(parent, controller)
         self.controller = controller
-        self.play_game_button: ttk.Button = ttk.Button(text="Play", width=15)
-        self.manage_account_button: ttk.Button = ttk.Button(text="Manage Account", width=15)
-        self.logout_button: ttk.Button = ttk.Button(text="Logout", width=15)
+        self.play_game_button: ttk.Button = ttk.Button(text="Play", width=15, command=self.transition_to_game_screen)
+        self.manage_account_button: ttk.Button = ttk.Button(text="Manage Account", width=15,
+                                                            command=self.transition_to_account_management)
+        self.logout_button: ttk.Button = ttk.Button(text="Logout", width=15, command=self.logout_user)
 
         style: ttk.Style = ttk.Style()
         style.configure(style="Title.TLabel", font=("TkDefaultFont", 25))
@@ -24,3 +25,12 @@ class MainMenuFrame(BaseFrame):
         self.play_game_button.place(relx=0.4, rely=0.5, anchor="center")
         self.manage_account_button.place(relx=0.6, rely=0.5, anchor="center")
         self.logout_button.place(relx=0.5, rely=0.6, anchor="center")
+
+    def transition_to_game_screen(self) -> None:
+        pass
+
+    def transition_to_account_management(self) -> None:
+        pass
+
+    def logout_user(self) -> None:
+        pass
