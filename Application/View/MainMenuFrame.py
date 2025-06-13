@@ -27,10 +27,12 @@ class MainMenuFrame(BaseFrame):
         self.logout_button.place(relx=0.5, rely=0.6, anchor="center")
 
     def transition_to_game_screen(self) -> None:
-        pass
+        from Application.View.GameSelectionFrame import GameSelectionFrame
+        self.controller.render_frame(GameSelectionFrame)
 
     def transition_to_account_management(self) -> None:
-        pass
+        from Application.View.AccountManagementFrame import AccountManagementFrame
+        self.controller.render_frame(AccountManagementFrame)
 
     def logout_user(self) -> None:
         from Application.View.EntryFrame import EntryFrame
