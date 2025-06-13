@@ -9,6 +9,10 @@ if TYPE_CHECKING:
 class BaseFrame(ttk.Frame, ABC):
     """
     Parent class of all the frames used in the application.
+
+    Naming conventions:
+        All classes should be named <ScreenDescriptor>Frame
+        Any function that's sole purpose is to transitions screens should be named transition_to_<NEW_SCREEN_DESCRIPTOR>
     """
 
     def __init__(self, parent: ttk.Frame, controller: 'MainWindow', **kwargs):
