@@ -24,3 +24,12 @@ class MainMenuFrame(BaseFrame):
         self.play_game_button.place(relx=0.4, rely=0.5, anchor="center")
         self.manage_account_button.place(relx=0.6, rely=0.5, anchor="center")
         self.logout_button.place(relx=0.5, rely=0.6, anchor="center")
+
+    def transition_to_game_screen(self) -> None:
+        pass
+
+    def transition_to_account_management(self):
+        pass
+
+    def logout_user(self) -> None:
+        pass
