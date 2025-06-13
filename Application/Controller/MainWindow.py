@@ -65,6 +65,12 @@ class MainWindow(tk.Tk):
         game_menu.add_command(label="TicTacToe", command="")
         game_menu.add_command(label="Trivia", command="")
 
+        # Home menu
+        home_menu: tk.Menu = tk.Menu(self.menu_bar, tearoff=False)
+        self.menu_bar.add_cascade(label="Home", menu=home_menu)
+        home_menu.add_command(label="Main Menu", command="")
+        home_menu.add_command(label="Quit", command=self.quit)
+
         self.configure(menu=self.menu_bar)
 
     def transition_to_password_reset(self):
