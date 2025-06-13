@@ -26,7 +26,7 @@ class MainWindow(tk.Tk):
         self.empty_menu: tk.Menu = tk.Menu()
         self.create_menu()
 
-        self.render_frame(EntryFrame, )  # show_menu=False)
+        self.render_frame(EntryFrame, show_menu=False)
 
     def render_frame(self, new_frame: type[BaseFrame], show_menu: bool = True, **kwargs) -> None:
         """
@@ -68,7 +68,7 @@ class MainWindow(tk.Tk):
         # Home menu
         home_menu: tk.Menu = tk.Menu(self.menu_bar, tearoff=False)
         self.menu_bar.add_cascade(label="Home", menu=home_menu)
-        home_menu.add_command(label="Main Menu", command="")
+        home_menu.add_command(label="Main Menu", command=self.transition_to_main_menu)
         home_menu.add_command(label="Quit", command=self.quit)
 
         self.configure(menu=self.menu_bar)
@@ -79,6 +79,15 @@ class MainWindow(tk.Tk):
         :return: None
         """
         self.render_frame(PasswordResetFrame)
+
+    def transition_to_main_menu(self) -> None:
+        """
+        Transitions to MainMenu
+        :return: None
+        """
+
+        from Application.View.MainMenuFrame import MainMenuFrame
+        self.render_frame(MainMenuFrame)
 
 
 if __name__ == "__main__":
