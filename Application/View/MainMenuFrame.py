@@ -33,4 +33,7 @@ class MainMenuFrame(BaseFrame):
         pass
 
     def logout_user(self) -> None:
-        pass
+        from Application.View.EntryFrame import EntryFrame
+
+        self.controller.account_controller.account = None
+        self.controller.render_frame(EntryFrame)
