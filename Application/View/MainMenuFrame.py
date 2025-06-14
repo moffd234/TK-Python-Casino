@@ -27,6 +27,10 @@ class MainMenuFrame(BaseFrame):
         self.logout_button.place(relx=0.5, rely=0.6, anchor="center")
 
     def transition_to_game_screen(self) -> None:
+        """
+        Transitions to GameSelectionFrame
+        :return: None
+        """
         from Application.View.GameSelectionFrame import GameSelectionFrame
         self.controller.render_frame(GameSelectionFrame)
 
