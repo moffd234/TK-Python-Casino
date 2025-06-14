@@ -35,6 +35,10 @@ class MainMenuFrame(BaseFrame):
         self.controller.render_frame(GameSelectionFrame)
 
     def transition_to_account_management(self) -> None:
+        """
+        Transitions to AccountManagementFrame
+        :return: None
+        """
         from Application.View.AccountManagementFrame import AccountManagementFrame
         self.controller.render_frame(AccountManagementFrame)
 
