@@ -43,6 +43,10 @@ class MainMenuFrame(BaseFrame):
         self.controller.render_frame(AccountManagementFrame)
 
     def logout_user(self) -> None:
+        """
+        Sets account_controller.account to None then transitions to EntryFrame
+        :return: None
+        """
         from Application.View.EntryFrame import EntryFrame
 
         self.controller.account_controller.account = None
