@@ -1,6 +1,10 @@
-from tkinter import ttk
+import os
+from tkinter import ttk, PhotoImage
 from PIL import Image, ImageTk
+from PIL.Image import Image as PILImage
 from Application.View.BaseFrame import BaseFrame
+
+ASSETS_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "Assets"))
 
 
 class GameSelectionFrame(BaseFrame):
@@ -20,15 +24,23 @@ class GameSelectionFrame(BaseFrame):
         title_label = ttk.Label(self, text="Choose A Game", font=("Helvetica", 16, "bold"))
         title_label.grid(row=0, column=0, columnspan=3, pady=20)
 
-        games = [("CoinFlip", 1, 0), ("NumberGuess", 1, 1), ("RPS", 1, 2), ("Slots", 2, 0),
-                 ("TicTacToe", 2, 1), ("Trivia", 2, 2)]
+        games = [("CoinFlip", os.path.join(ASSETS_PATH, "CoinFlip.png"), 1, 0),
+                 ("NumberGuess", os.path.join(ASSETS_PATH, "NumberImage.png"), 1, 1),
+                 ("RPS", os.path.join(ASSETS_PATH, "RPS_2.png"), 1, 2),
+                 ("Slots", os.path.join(ASSETS_PATH, "Slots.png"), 2, 0),
+                 ("TicTacToe", os.path.join(ASSETS_PATH, "TicTacToe.png"), 2, 1),
+                 ("Trivia", os.path.join(ASSETS_PATH, "Trivia.png"), 2, 2)]
 
-        for game_name, row, col in games:
+        for game_name, img_path, row, col in games:
             frame = ttk.Frame(self)
             frame.grid(row=row, column=col, padx=20, pady=20, sticky="nsew")
 
-            img_label = ttk.Label(frame, image=self.placeholder_image)
-            img_label.image = self.placeholder_image
+            img: PILImage = Image.open(img_path)
+            img = img.resize((100, 100), Image.Resampling.LANCZOS)
+            tk_image: PhotoImage = ImageTk.PhotoImage(img)
+
+            img_label = ttk.Label(frame, image=tk_image)
+            img_label.image = tk_image
             img_label.pack()
 
             text_label = ttk.Label(frame, text=game_name, font=("Helvetica", 10, "bold"))
