@@ -35,11 +35,11 @@ class GameSelectionFrame(BaseFrame):
             GameCard("Trivia", os.path.join(ASSETS_PATH, "Trivia.png"), 2, 2, self.transition_to_trivia),
         ]
 
-        for game_name, img_path, row, col in game_cards:
+        for game in game_cards:
             frame = ttk.Frame(self)
-            frame.grid(row=row, column=col, padx=20, pady=20, sticky="nsew")
+            frame.grid(row=game.row, column=game.col, padx=20, pady=20, sticky="nsew")
 
-            img: PILImage = Image.open(img_path)
+            img: PILImage = Image.open(game.image_path)
             img = img.resize((100, 100), Image.Resampling.LANCZOS)
             tk_image: PhotoImage = ImageTk.PhotoImage(img)
 
@@ -47,7 +47,7 @@ class GameSelectionFrame(BaseFrame):
             img_button.image = tk_image
             img_button.pack()
 
-            text_label = ttk.Label(frame, text=game_name, font=("Helvetica", 10, "bold"))
+            text_label = ttk.Label(frame, text=game.name, font=("Helvetica", 10, "bold"))
             text_label.pack()
 
     def transition_to_coinflip(self) -> None:
