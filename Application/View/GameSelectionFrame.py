@@ -31,7 +31,7 @@ class GameSelectionFrame(BaseFrame):
             GameCard("NumberGuess", os.path.join(ASSETS_PATH, "NumberImage.png"), 1, 1, self.transition_to_ng),
             GameCard("RPS", os.path.join(ASSETS_PATH, "RPS_2.png"), 1, 2, self.transition_to_rps),
             GameCard("Slots", os.path.join(ASSETS_PATH, "Slots.png"), 2, 0, self.transition_to_slots),
-            GameCard("TicTacToe", os.path.join(ASSETS_PATH, "TicTacToe.png"), 2, 1, self.transition_to_ttt()),
+            GameCard("TicTacToe", os.path.join(ASSETS_PATH, "TicTacToe.png"), 2, 1, self.transition_to_ttt),
             GameCard("Trivia", os.path.join(ASSETS_PATH, "Trivia.png"), 2, 2, self.transition_to_trivia),
         ]
 
