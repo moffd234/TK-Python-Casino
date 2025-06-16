@@ -39,9 +39,9 @@ class GameSelectionFrame(BaseFrame):
             img = img.resize((100, 100), Image.Resampling.LANCZOS)
             tk_image: PhotoImage = ImageTk.PhotoImage(img)
 
-            img_label = ttk.Label(frame, image=tk_image)
-            img_label.image = tk_image
-            img_label.pack()
+            img_button = ttk.Button(frame, image=tk_image)
+            img_button.image = tk_image
+            img_button.pack()
 
             text_label = ttk.Label(frame, text=game_name, font=("Helvetica", 10, "bold"))
             text_label.pack()
