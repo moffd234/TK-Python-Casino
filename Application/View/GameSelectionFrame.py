@@ -49,3 +49,21 @@ class GameSelectionFrame(BaseFrame):
 
             text_label = ttk.Label(frame, text=game_name, font=("Helvetica", 10, "bold"))
             text_label.pack()
+
+    def transition_to_coinflip(self) -> None:
+        pass
+
+    def transition_to_ng(self) -> None:
+        pass
+
+    def transition_to_rps(self) -> None:
+        pass
+
+    def transition_to_slots(self) -> None:
+        pass
+
+    def transition_to_ttt(self) -> None:
+        pass
+
+    def transition_to_trivia(self) -> None:
+        pass
