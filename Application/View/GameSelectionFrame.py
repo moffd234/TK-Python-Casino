@@ -63,7 +63,8 @@ class GameSelectionFrame(BaseFrame):
         self.controller.render_frame(NumberGuessFrame)
 
     def transition_to_rps(self) -> None:
-        pass
+        from Application.View.GameViews.RpsFrame import RpsFrame
+        self.controller.render_frame(RpsFrame)
 
     def transition_to_slots(self) -> None:
         pass
