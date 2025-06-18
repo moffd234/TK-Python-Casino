@@ -59,7 +59,8 @@ class GameSelectionFrame(BaseFrame):
         self.controller.render_frame(CoinFlipFrame)
 
     def transition_to_ng(self) -> None:
-        pass
+        from Application.View.GameViews.NumberGuessFrame import NumberGuessFrame
+        self.controller.render_frame(NumberGuessFrame)
 
     def transition_to_rps(self) -> None:
         pass
