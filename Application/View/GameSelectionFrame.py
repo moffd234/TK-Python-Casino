@@ -43,7 +43,7 @@ class GameSelectionFrame(BaseFrame):
             img = img.resize((100, 100), Image.Resampling.LANCZOS)
             tk_image: PhotoImage = ImageTk.PhotoImage(img)
 
-            img_button = ttk.Button(frame, image=tk_image)
+            img_button = ttk.Button(frame, image=tk_image, command=game.callback)
             img_button.image = tk_image
             img_button.pack()
 
