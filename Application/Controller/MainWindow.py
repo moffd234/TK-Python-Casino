@@ -91,6 +91,54 @@ class MainWindow(tk.Tk):
         from Application.View.MainMenuFrame import MainMenuFrame
         self.render_frame(MainMenuFrame)
 
+    def transition_to_coinflip(self) -> None:
+        """
+        Transitions to CoinFlipFrame
+        :return: None
+        """
+        from Application.View.GameViews.CoinFlipFrame import CoinFlipFrame
+        self.render_frame(CoinFlipFrame)
+
+    def transition_to_ng(self) -> None:
+        """
+        Transitions to NumberGuessFrame
+        :return: None
+        """
+        from Application.View.GameViews.NumberGuessFrame import NumberGuessFrame
+        self.render_frame(NumberGuessFrame)
+
+    def transition_to_rps(self) -> None:
+        """
+        Transitions to RpsFrame
+        :return: None
+        """
+        from Application.View.GameViews.RpsFrame import RpsFrame
+        self.render_frame(RpsFrame)
+
+    def transition_to_slots(self) -> None:
+        """
+        Transitions to SlotFrame
+        :return: None
+        """
+        from Application.View.GameViews.SlotsFrame import SlotsFrame
+        self.render_frame(SlotsFrame)
+
+    def transition_to_ttt(self) -> None:
+        """
+        Transitions to TicTacToeFrame
+        :return: None
+        """
+        from Application.View.GameViews.TicTacToeFrame import TicTacToeFrame
+        self.render_frame(TicTacToeFrame)
+
+    def transition_to_trivia(self) -> None:
+        """
+        Transitions to TriviaFrame
+        :return: None
+        """
+        from Application.View.GameViews.TriviaGameFrame import TriviaGameFrame
+        self.render_frame(TriviaGameFrame)
+
 
 if __name__ == "__main__":
     app = MainWindow()
