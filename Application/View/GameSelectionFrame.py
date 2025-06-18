@@ -51,6 +51,10 @@ class GameSelectionFrame(BaseFrame):
             text_label.pack()
 
     def transition_to_coinflip(self) -> None:
+        """
+        Transitions to CoinFlipFrame
+        :return: None
+        """
         from Application.View.GameViews.CoinFlipFrame import CoinFlipFrame
         self.controller.render_frame(CoinFlipFrame)
 
