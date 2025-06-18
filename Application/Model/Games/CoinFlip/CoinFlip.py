@@ -13,8 +13,8 @@ def handle_heads_tails() -> str:
 
 class CoinFlip(Game):
 
-    def __init__(self, player: UserAccount, manager: AccountManager):
-        super().__init__(player, manager)
+    def __init__(self):
+        super().__init__()
         self.console.color = ANSI_COLORS.BLUE.value
 
     def print_welcome_message(self) -> None:
@@ -31,16 +31,6 @@ class CoinFlip(Game):
              3. If you guess correctly you will win 1.25x your wager
         """)
 
-    def run(self):
-        self.print_welcome_message()
-
-        while self.get_continue_input():
-            wager: float = self.get_wager_amount()
-
-            flip: str = handle_heads_tails()
-            guess: str = self.get_guess()
-
-            self.console.print_colored(self.handle_outcome(guess, flip, wager))
 
     def get_guess(self) -> str:
         guess: str = self.console.get_string_input("Enter your guess: (heads or tails)")
