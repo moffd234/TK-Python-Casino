@@ -51,7 +51,8 @@ class GameSelectionFrame(BaseFrame):
             text_label.pack()
 
     def transition_to_coinflip(self) -> None:
-        pass
+        from Application.View.GameViews.CoinFlipFrame import CoinFlipFrame
+        self.controller.render_frame(CoinFlipFrame)
 
     def transition_to_ng(self) -> None:
         pass
