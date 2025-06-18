@@ -60,12 +60,12 @@ class MainWindow(tk.Tk):
         # Game Menu
         game_menu: tk.Menu = tk.Menu(self.menu_bar, tearoff=False)
         self.menu_bar.add_cascade(label="Games", menu=game_menu)
-        game_menu.add_command(label="Coin Flip", command="")
-        game_menu.add_command(label="Number Guess", command="")
-        game_menu.add_command(label="RPS", command="")
-        game_menu.add_command(label="Slots", command="")
-        game_menu.add_command(label="TicTacToe", command="")
-        game_menu.add_command(label="Trivia", command="")
+        game_menu.add_command(label="Coin Flip", command=self.transition_to_coinflip)
+        game_menu.add_command(label="Number Guess", command=self.transition_to_ng)
+        game_menu.add_command(label="RPS", command=self.transition_to_rps)
+        game_menu.add_command(label="Slots", command=self.transition_to_slots)
+        game_menu.add_command(label="TicTacToe", command=self.transition_to_ttt)
+        game_menu.add_command(label="Trivia", command=self.transition_to_trivia)
 
         # Home menu
         home_menu: tk.Menu = tk.Menu(self.menu_bar, tearoff=False)
