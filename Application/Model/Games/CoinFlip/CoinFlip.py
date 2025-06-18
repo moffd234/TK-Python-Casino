@@ -48,21 +48,3 @@ class CoinFlip(Game):
 
         else:
             return f"You Loss! The coin was {flip}"
-
-
-def main():
-    import os
-
-    account_manager: AccountManager = AccountManager()
-    account: UserAccount = UserAccount("Tester", "ValidPassword123!", 1000, "test@email.com",
-                                       ["Who is your favorite sports team?", "Test Answer",
-                                        "What street did you grow up on?", "Test Street"])
-    game: CoinFlip = CoinFlip(account, account_manager)
-    game.run()
-
-    if os.path.exists("casino.db"):
-        os.remove("casino.db")
-
-
-if __name__ == "__main__":
-    main()
