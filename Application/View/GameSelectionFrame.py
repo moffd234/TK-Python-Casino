@@ -67,7 +67,8 @@ class GameSelectionFrame(BaseFrame):
         self.controller.render_frame(RpsFrame)
 
     def transition_to_slots(self) -> None:
-        pass
+        from Application.View.GameViews.SlotsFrame import SlotsFrame
+        self.controller.render_frame(SlotsFrame)
 
     def transition_to_ttt(self) -> None:
         pass
