@@ -71,7 +71,8 @@ class GameSelectionFrame(BaseFrame):
         self.controller.render_frame(SlotsFrame)
 
     def transition_to_ttt(self) -> None:
-        pass
+        from Application.View.GameViews.TicTacToeFrame import TicTacToeFrame
+        self.controller.render_frame(TicTacToeFrame)
 
     def transition_to_trivia(self) -> None:
         pass
