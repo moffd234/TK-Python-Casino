@@ -6,6 +6,7 @@ from Application.Utils.LoggingController import setup_logging
 from Application.Model.Accounts.AccountManager import AccountManager
 from Application.View.BaseFrame import BaseFrame
 from Application.View.EntryFrame import EntryFrame
+from Application.View.GameSelectionFrame import GameSelectionFrame
 from Application.View.PasswordResetFrame import PasswordResetFrame
 
 setup_logging()
@@ -26,7 +27,8 @@ class MainWindow(tk.Tk):
         self.empty_menu: tk.Menu = tk.Menu()
         self.create_menu()
 
-        self.render_frame(EntryFrame, show_menu=False)
+        # self.render_frame(EntryFrame, show_menu=False)
+        self.render_frame(GameSelectionFrame)
 
     def render_frame(self, new_frame: type[BaseFrame], show_menu: bool = True, **kwargs) -> None:
         """
