@@ -27,12 +27,12 @@ class GameSelectionFrame(BaseFrame):
         title_label.grid(row=0, column=0, columnspan=3, pady=20)
 
         game_cards = [
-            GameCard("CoinFlip", os.path.join(ASSETS_PATH, "CoinFlip.png"), 1, 0, self.transition_to_coinflip),
-            GameCard("NumberGuess", os.path.join(ASSETS_PATH, "NumberImage.png"), 1, 1, self.transition_to_ng),
-            GameCard("RPS", os.path.join(ASSETS_PATH, "RPS_2.png"), 1, 2, self.transition_to_rps),
-            GameCard("Slots", os.path.join(ASSETS_PATH, "Slots.png"), 2, 0, self.transition_to_slots),
-            GameCard("TicTacToe", os.path.join(ASSETS_PATH, "TicTacToe.png"), 2, 1, self.transition_to_ttt),
-            GameCard("Trivia", os.path.join(ASSETS_PATH, "Trivia.png"), 2, 2, self.transition_to_trivia),
+            GameCard("CoinFlip", os.path.join(ASSETS_PATH, "CoinFlip.png"), 1, 0, self.controller.transition_to_coinflip),
+            GameCard("NumberGuess", os.path.join(ASSETS_PATH, "NumberImage.png"), 1, 1, self.controller.transition_to_ng),
+            GameCard("RPS", os.path.join(ASSETS_PATH, "RPS_2.png"), 1, 2, self.controller.transition_to_rps),
+            GameCard("Slots", os.path.join(ASSETS_PATH, "Slots.png"), 2, 0, self.controller.transition_to_slots),
+            GameCard("TicTacToe", os.path.join(ASSETS_PATH, "TicTacToe.png"), 2, 1, self.controller.transition_to_ttt),
+            GameCard("Trivia", os.path.join(ASSETS_PATH, "Trivia.png"), 2, 2, self.controller.transition_to_trivia),
         ]
 
         for game in game_cards:
@@ -49,51 +49,3 @@ class GameSelectionFrame(BaseFrame):
 
             text_label = ttk.Label(frame, text=game.name, font=("Helvetica", 10, "bold"))
             text_label.pack()
-
-    def transition_to_coinflip(self) -> None:
-        """
-        Transitions to CoinFlipFrame
-        :return: None
-        """
-        from Application.View.GameViews.CoinFlipFrame import CoinFlipFrame
-        self.controller.render_frame(CoinFlipFrame)
-
-    def transition_to_ng(self) -> None:
-        """
-        Transitions to NumberGuessFrame
-        :return: None
-        """
-        from Application.View.GameViews.NumberGuessFrame import NumberGuessFrame
-        self.controller.render_frame(NumberGuessFrame)
-
-    def transition_to_rps(self) -> None:
-        """
-        Transitions to RpsFrame
-        :return: None
-        """
-        from Application.View.GameViews.RpsFrame import RpsFrame
-        self.controller.render_frame(RpsFrame)
-
-    def transition_to_slots(self) -> None:
-        """
-        Transitions to SlotFrame
-        :return: None
-        """
-        from Application.View.GameViews.SlotsFrame import SlotsFrame
-        self.controller.render_frame(SlotsFrame)
-
-    def transition_to_ttt(self) -> None:
-        """
-        Transitions to TicTacToeFrame
-        :return: None
-        """
-        from Application.View.GameViews.TicTacToeFrame import TicTacToeFrame
-        self.controller.render_frame(TicTacToeFrame)
-
-    def transition_to_trivia(self) -> None:
-        """
-        Transitions to TriviaFrame
-        :return: None
-        """
-        from Application.View.GameViews.TriviaGameFrame import TriviaGameFrame
-        self.controller.render_frame(TriviaGameFrame)
