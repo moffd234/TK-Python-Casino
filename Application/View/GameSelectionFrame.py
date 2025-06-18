@@ -16,7 +16,7 @@ class GameSelectionFrame(BaseFrame):
         self.placeholder_image = ImageTk.PhotoImage(Image.new("RGB", (100, 100), color="gray"))
         self.place_elements()
 
-    def place_elements(self):
+    def place_elements(self) -> None:
         self.grid_rowconfigure(0, weight=1)
         self.grid_rowconfigure(3, weight=1)
         self.grid_columnconfigure(0, weight=1)
