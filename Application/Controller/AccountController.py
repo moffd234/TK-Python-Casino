@@ -124,3 +124,9 @@ class AccountController:
         :return: None
         """
         self.manager.update_password(self.account, new_password)
+
+    def subtract_losses(self, wager):
+        self.manager.subtract_and_save_account(self.account, wager)
+
+    def add_winnings(self, winnings):
+        self.manager.add_and_save_account(self.account, winnings)
