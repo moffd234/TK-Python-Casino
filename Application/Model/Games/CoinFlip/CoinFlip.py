@@ -1,7 +1,5 @@
 import random
 
-from Application.Model.Accounts.AccountManager import AccountManager
-from Application.Model.Accounts.UserAccount import UserAccount
 from Application.Model.Games.Game import Game
 from Application.Utils.ANSI_COLORS import ANSI_COLORS
 
