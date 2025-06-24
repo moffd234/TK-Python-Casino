@@ -23,7 +23,6 @@ class EntryFrame(BaseFrame):
 
         self.place_elements()
 
-
     def login(self) -> None:
         self.controller.render_frame(LoginFrame, show_menu=False)
 
