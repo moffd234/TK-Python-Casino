@@ -3,12 +3,6 @@ import uuid
 
 from Application.Model.Accounts.AccountManager import AccountManager, verify_password
 from Application.Model.Accounts.UserAccount import UserAccount
-from Application.Model.Games.CoinFlip.CoinFlip import CoinFlip
-from Application.Model.Games.NumberGuess.NumberGuess import NumberGuess
-from Application.Model.Games.RockPaperScissors.RPS import RPS
-from Application.Model.Games.Slots.Slots import Slots
-from Application.Model.Games.TicTacToe.TicTacToe import TicTacToe
-from Application.Model.Games.TriviaGame.TriviaGame import TriviaGame
 from Application.Utils.ANSI_COLORS import ANSI_COLORS
 from Application.Utils.IOConsole import IOConsole
 import re
@@ -184,47 +178,47 @@ class Casino:
             else:
                 self.console.print_error("Invalid input. Please try again\n\n")
 
-    def prompt_game(self) -> None:
-        """
-        Displays a list of available games and prompts the user to select one.
-        Launches the selected game or returns to the previous menu if 'back' is entered.
-        :return: None
-        """
-        while True:
-            answer = self.console.get_string_input("Welcome to the Game Selection Dashboard!" +
-                                                   "\nFrom here, you can select any of the following options:" +
-                                                   "\n\t[ RPS ], [ NUMBERGUESS ], [ TRIVIA ], [ TIC-TAC-TOE ]. [ COINFLIP ], [ SLOTS ]")
-
-            # The following are placeholders until the games are made
-            if answer == "rps" or answer == "rock paper scissors":
-                game = RPS(self.account, self.manager)
-                game.run()
-
-            elif answer == "numberguess" or answer == "number guess":
-                game = NumberGuess(self.account, self.manager)
-                game.run()
-
-            elif answer == "trivia":
-                game = TriviaGame(self.account, self.manager)
-                game.run()
-
-            elif answer == "tic-tac-toe" or answer == "tictactoe":
-                game = TicTacToe(self.account, self.manager)
-                game.run()
-
-            elif answer == "coinflip" or answer == "coin flip":
-                game = CoinFlip(self.account, self.manager)
-                game.run()
-
-            elif answer == "slots":
-                game = Slots(self.account, self.manager)
-                game.run()
-
-            elif answer == "back":
-                return None
-
-            else:
-                self.console.print_error("Invalid input. Please try again\n\n")
+    # def prompt_game(self) -> None:
+    #     """
+    #     Displays a list of available games and prompts the user to select one.
+    #     Launches the selected game or returns to the previous menu if 'back' is entered.
+    #     :return: None
+    #     """
+    #     while True:
+    #         answer = self.console.get_string_input("Welcome to the Game Selection Dashboard!" +
+    #                                                "\nFrom here, you can select any of the following options:" +
+    #                                                "\n\t[ RPS ], [ NUMBERGUESS ], [ TRIVIA ], [ TIC-TAC-TOE ]. [ COINFLIP ], [ SLOTS ]")
+    #
+    #         # The following are placeholders until the games are made
+    #         if answer == "rps" or answer == "rock paper scissors":
+    #             game = RPS(self.account, self.manager)
+    #             game.run()
+    #
+    #         elif answer == "numberguess" or answer == "number guess":
+    #             game = NumberGuess(self.account, self.manager)
+    #             game.run()
+    #
+    #         elif answer == "trivia":
+    #             game = TriviaGame(self.account, self.manager)
+    #             game.run()
+    #
+    #         elif answer == "tic-tac-toe" or answer == "tictactoe":
+    #             game = TicTacToe(self.account, self.manager)
+    #             game.run()
+    #
+    #         elif answer == "coinflip" or answer == "coin flip":
+    #             game = CoinFlip(self.account, self.manager)
+    #             game.run()
+    #
+    #         elif answer == "slots":
+    #             game = Slots(self.account, self.manager)
+    #             game.run()
+    #
+    #         elif answer == "back":
+    #             return None
+    #
+    #         else:
+    #             self.console.print_error("Invalid input. Please try again\n\n")
 
     def add_funds(self) -> None:
         """
