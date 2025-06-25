@@ -17,11 +17,11 @@ class CoinFlipFrame(BaseFrame):
 
         img: PILImage = Image.open(tails_image_path).resize((100, 100), Image.Resampling.LANCZOS)
         self.tails_image: PhotoImage = ImageTk.PhotoImage(img)
-        self.tails_button: ttk.Button = ttk.Button(self, image=self.tails_image, command="")
+        self.tails_button: ttk.Button = ttk.Button(self, image=self.tails_image, command=self.tails_chosen)
 
         img = Image.open(heads_image_path).resize((100, 100), Image.Resampling.LANCZOS)
         self.heads_image: PhotoImage = ImageTk.PhotoImage(img)
-        self.heads_button: ttk.Button = ttk.Button(self, image=self.heads_image, command="")
+        self.heads_button: ttk.Button = ttk.Button(self, image=self.heads_image, command=self.heads_chosen)
 
         self.prompt_label: ttk.Label = ttk.Label(self, text="Choose A Coin Side", font=("Helvetica", 16, "bold"))
 
@@ -31,3 +31,10 @@ class CoinFlipFrame(BaseFrame):
         self.tails_button.place(relx=0.35, rely=0.45, anchor="center")
         self.heads_button.place(relx=0.65, rely=0.45, anchor="center")
         self.prompt_label.place(relx=0.5, rely=0.15, anchor="center")
+
+    def tails_chosen(self) -> None:
+        pass
+
+    def heads_chosen(self) -> None:
+        pass
+
