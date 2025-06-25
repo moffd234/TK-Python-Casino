@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 
 from Application.Controller.AccountController import AccountController
+from Application.Controller.Games.GameController import GameController
 from Application.Utils.LoggingController import setup_logging
 from Application.Model.Accounts.AccountManager import AccountManager
 from Application.View.BaseFrame import BaseFrame
@@ -19,6 +20,7 @@ class MainWindow(tk.Tk):
         self.geometry("800x800")
         account_manager: AccountManager = AccountManager()
         self.account_controller: AccountController = AccountController(account_manager)
+        self.game_controller: GameController = GameController(self.account_controller)
 
         self.container: ttk.Frame = ttk.Frame(self)
         self.container.pack(fill="both", expand=True)
