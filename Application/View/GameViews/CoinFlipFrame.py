@@ -28,4 +28,6 @@ class CoinFlipFrame(BaseFrame):
         self.place_elements()
 
     def place_elements(self):
-        pass
+        self.tails_button.place(relx=0.35, rely=0.45, anchor="center")
+        self.heads_button.place(relx=0.65, rely=0.45, anchor="center")
+        self.prompt_label.place(relx=0.5, rely=0.15, anchor="center")
