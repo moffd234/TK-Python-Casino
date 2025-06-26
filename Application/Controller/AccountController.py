@@ -125,8 +125,12 @@ class AccountController:
         """
         self.manager.update_password(self.account, new_password)
 
-    def subtract_losses(self, wager):
+    def subtract_losses(self, wager) -> bool:
+        if self.account.balance < wager:
+            return True
+
         self.manager.subtract_and_save_account(self.account, wager)
+        return False
 
     def add_winnings(self, winnings):
         self.manager.add_and_save_account(self.account, winnings)
