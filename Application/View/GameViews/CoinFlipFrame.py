@@ -24,17 +24,21 @@ class CoinFlipFrame(BaseFrame):
         self.heads_button: ttk.Button = ttk.Button(self, image=self.heads_image, command=self.heads_chosen)
 
         self.prompt_label: ttk.Label = ttk.Label(self, text="Choose A Coin Side", font=("Helvetica", 16, "bold"))
+        self.wager_label: ttk.Label = ttk.Label(self, text="Enter Wager:", font=("Helvetica", 12))
+        self.wager_entry: ttk.Entry = ttk.Entry(self, width=20)
 
         self.place_elements()
 
     def place_elements(self):
+        self.prompt_label.place(relx=0.5, rely=0.15, anchor="center")
+        self.wager_label.place(relx=0.5, rely=0.25, anchor="center")
+        self.wager_entry.place(relx=0.5, rely=0.30, anchor="center")
+
         self.tails_button.place(relx=0.35, rely=0.45, anchor="center")
         self.heads_button.place(relx=0.65, rely=0.45, anchor="center")
-        self.prompt_label.place(relx=0.5, rely=0.15, anchor="center")
 
     def tails_chosen(self) -> None:
         pass
 
     def heads_chosen(self) -> None:
         pass
-
