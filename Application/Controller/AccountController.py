@@ -125,7 +125,13 @@ class AccountController:
         """
         self.manager.update_password(self.account, new_password)
 
-    def subtract_losses(self, wager) -> bool:
+    def subtract_losses(self, wager: float) -> bool:
+        """
+        Attempts to subtract wager from user's balance.
+
+        :param wager: Wager amount enter by the user.
+        :return: True if successful. False otherwise.
+        """
         if self.account.balance < wager:
             return True
 
