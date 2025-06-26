@@ -3,6 +3,7 @@ from tkinter import ttk, PhotoImage
 from PIL import Image, ImageTk
 from PIL.Image import Image as PILImage
 
+from Application.Utils.TypeValidation import validate_float
 from Application.View.BaseFrame import BaseFrame
 
 
@@ -25,7 +26,9 @@ class CoinFlipFrame(BaseFrame):
 
         self.prompt_label: ttk.Label = ttk.Label(self, text="Choose A Coin Side", font=("Helvetica", 16, "bold"))
         self.wager_label: ttk.Label = ttk.Label(self, text="Enter Wager:", font=("Helvetica", 12))
-        self.wager_entry: ttk.Entry = ttk.Entry(self, width=20)
+
+        validate = (self.register(validate_float), "%P")
+        self.wager_entry: ttk.Entry = ttk.Entry(self, width=20, validate="key", validatecommand=validate)
 
         self.place_elements()
 
