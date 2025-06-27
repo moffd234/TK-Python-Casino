@@ -1,4 +1,6 @@
+import logging
 import os
+import tkinter.messagebox
 from tkinter import ttk, PhotoImage
 from PIL import Image, ImageTk
 from PIL.Image import Image as PILImage
@@ -45,3 +47,11 @@ class CoinFlipFrame(BaseFrame):
 
     def heads_chosen(self) -> None:
         pass
+
+    def handle_outcome(self, outcome: bool, wager: float):
+        if outcome:
+            self.success_label.config(text=f"You Won! Your winnings are {wager * 1.25}")
+            self.success_label.place(relx=0.5, rely=0.15, anchor="center")
+        else:
+            self.error_label.config(text="You loss!")
+            self.error_label.place(relx=0.5, rely=0.15, anchor="center")
