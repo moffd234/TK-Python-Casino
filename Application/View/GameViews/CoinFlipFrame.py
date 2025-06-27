@@ -43,21 +43,12 @@ class CoinFlipFrame(BaseFrame):
         self.heads_button.place(relx=0.65, rely=0.45, anchor="center")
 
     def tails_chosen(self) -> None:
-        try:
-            wager: float = float(self.wager_entry.get())
-            outcome: bool = self.controller.game_controller.cf_controller.handle_outcome("tails", wager)
-
-            self.handle_outcome(outcome, wager)
-
-        except ValueError:
-            tkinter.messagebox.showerror(message="An error has occurred. Try again")
-            logging.error("Error casting wager to float in CoinFlip")
+        self.coin_selected("tails")
 
     def heads_chosen(self) -> None:
-        pass
+        self.coin_selected("heads")
 
     def handle_outcome(self, outcome: bool, wager: float) -> None:
-        self.prompt_label.place_forget()
 
         if outcome:
             self.success_label.config(text=f"You Won! Your winnings are {wager * 1.25}")
@@ -65,3 +56,18 @@ class CoinFlipFrame(BaseFrame):
         else:
             self.error_label.config(text="You loss!")
             self.error_label.place(relx=0.5, rely=0.15, anchor="center")
+
+    def coin_selected(self, guess: str) -> None:
+        self.success_label.place_forget()
+        self.error_label.place_forget()
+        self.prompt_label.place_forget()
+
+        try:
+            wager: float = float(self.wager_entry.get())
+            outcome: bool = self.controller.game_controller.cf_controller.handle_outcome(guess, wager)
+
+            self.handle_outcome(outcome, wager)
+
+        except ValueError:
+            tkinter.messagebox.showerror(message="An error has occurred. Try again")
+            logging.error("Error casting wager to float in CoinFlip")
