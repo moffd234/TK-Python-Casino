@@ -133,10 +133,10 @@ class AccountController:
         :return: True if successful. False otherwise.
         """
         if self.account.balance < wager:
-            return True
+            return False
 
         self.manager.subtract_and_save_account(self.account, wager)
-        return False
+        return True
 
     def add_winnings(self, winnings):
         self.manager.add_and_save_account(self.account, winnings)
