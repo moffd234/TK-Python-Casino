@@ -1,5 +1,7 @@
 import logging
 
+from sqlalchemy.orm import reconstructor
+
 from Application.Model.Accounts.db import Base
 from sqlalchemy import Column, String, Float, DateTime, UUID
 
@@ -34,6 +36,9 @@ class UserAccount(Base):
     reset_token = Column(UUID(as_uuid=True), nullable=True)
     reset_token_expiration = Column(DateTime, nullable=True)
 
+    @reconstructor
+    def init_on_load(self):
+        self.logger = logging.getLogger("database")
 
     def subtract_losses(self, wager: float) -> None:
         if wager <= 0:
