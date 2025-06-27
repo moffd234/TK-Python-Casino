@@ -9,9 +9,10 @@ class CoinFlipController:
 
     def handle_outcome(self, guess: str, wager: float) -> bool:
         flip: str = handle_heads_tails()
+        self.account_controller.subtract_losses(wager)
+
         if flip == guess:
             self.account_controller.add_winnings(wager * 1.25)
             return True
 
-        self.account_controller.subtract_losses(wager)
         return False
