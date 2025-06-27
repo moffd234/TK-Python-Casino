@@ -77,6 +77,12 @@ class CoinFlipFrame(BaseFrame):
             self.error_label.place(relx=0.5, rely=0.15, anchor="center")
 
     def coin_selected(self, guess: str) -> None:
+        """
+        Core handler for when the user selects a coin side ('heads' or 'tails').
+        Validates the wager, initiates the coin flip game logic, and updates the UI with the result.
+        :param guess: The side the user selected, either "heads" or "tails".
+        :return: None
+        """
         self.success_label.place_forget()
         self.error_label.place_forget()
         self.prompt_label.place_forget()
