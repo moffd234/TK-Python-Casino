@@ -51,7 +51,7 @@ class CoinFlipFrame(BaseFrame):
     def handle_outcome(self, outcome: bool, wager: float) -> None:
 
         if outcome:
-            self.success_label.config(text=f"You Won! Your winnings are ${wager * 1.25}")
+            self.success_label.config(text=f"You Won! Your winnings are ${wager * 0.25}")
             self.success_label.place(relx=0.5, rely=0.15, anchor="center")
         else:
             self.error_label.config(text="You loss!")
