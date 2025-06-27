@@ -43,7 +43,15 @@ class CoinFlipFrame(BaseFrame):
         self.heads_button.place(relx=0.65, rely=0.45, anchor="center")
 
     def tails_chosen(self) -> None:
-        pass
+        try:
+            wager: float = float(self.wager_entry.get())
+            outcome: bool = self.controller.game_controller.cf_controller.handle_outcome("tails", wager)
+
+            self.handle_outcome(outcome, wager)
+
+        except ValueError:
+            tkinter.messagebox.showerror(message="An error has occurred. Try again")
+            logging.error("Error casting wager to float in CoinFlip")
 
     def heads_chosen(self) -> None:
         pass
