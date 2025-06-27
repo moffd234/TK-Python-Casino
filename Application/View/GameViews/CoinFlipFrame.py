@@ -58,6 +58,12 @@ class CoinFlipFrame(BaseFrame):
         self.coin_selected("heads")
 
     def handle_outcome(self, outcome: GameOutcome, wager: float) -> None:
+        """
+        Displays the result of the coin flip game to the user based on the outcome.
+        :param outcome: The result of the coin flip (WIN, LOSS, or WITHDRAW_ERROR).
+        :param wager: The amount the user wagered.
+        :return: None
+        """
 
         if outcome == GameOutcome.WIN:
             self.success_label.config(text=f"You Won! Your winnings are ${wager * 0.25}")
