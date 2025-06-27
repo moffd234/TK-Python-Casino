@@ -44,9 +44,17 @@ class CoinFlipFrame(BaseFrame):
         self.heads_button.place(relx=0.65, rely=0.45, anchor="center")
 
     def tails_chosen(self) -> None:
+        """
+        Handles event for when user selects the tails coin
+        :return: None
+        """
         self.coin_selected("tails")
 
     def heads_chosen(self) -> None:
+        """
+        Handles event for when user selects the heads coin
+        :return: None
+        """
         self.coin_selected("heads")
 
     def handle_outcome(self, outcome: GameOutcome, wager: float) -> None:
