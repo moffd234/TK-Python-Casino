@@ -7,6 +7,9 @@ def validate_float(user_input: str, min_value=1.00):
     :return: True if the input is a valid float greater than min_value, or if no minimum is specified. False if the
              input is not a valid float or does not meet the minimum requirement.
     """
+    if user_input == "":
+        return True
+
     try:
         float_val: float = float(user_input)
         if min_value:
