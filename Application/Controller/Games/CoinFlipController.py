@@ -7,12 +7,15 @@ class CoinFlipController:
     def __init__(self, account_controller: AccountController):
         self.account_controller = account_controller
 
-    def handle_outcome(self, guess: str, wager: float) -> bool:
+    def handle_outcome(self, guess: str, wager: float) -> int:
         flip: str = handle_heads_tails()
-        self.account_controller.subtract_losses(wager)
+        successful_withdraw: bool = self.account_controller.subtract_losses(wager)
 
-        if flip == guess:
-            self.account_controller.add_winnings(wager * 1.25)
-            return True
+        if successful_withdraw:
+            if flip == guess:
+                self.account_controller.add_winnings(wager * 1.25)
+                return 0
 
-        return False
+            return 1
+
+        return 2
