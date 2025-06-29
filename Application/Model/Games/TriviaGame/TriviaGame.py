@@ -1,5 +1,5 @@
 import json
-from datetime import datetime, timedelta
+from datetime import datetime
 from html import unescape
 
 from Application.Model.Games.TriviaGame.Category import Category
@@ -9,6 +9,12 @@ CACHE_FILE_PATH = "category_cache.txt"
 
 
 def create_questions(q_response: dict) -> list[Question]:
+    """
+    Parses a JSON response from the trivia API and constructs a list of Question objects.
+
+    :param q_response: JSON dictionary containing trivia questions.
+    :return: A list of Question objects.
+    """
     questions_list: list[Question] = []
     for question in q_response["results"]:
         questions_list.append(Question(question=unescape(question["question"]),
