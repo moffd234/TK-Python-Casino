@@ -90,6 +90,7 @@ def get_response(url: str) -> None | dict:
     try:
         response.raise_for_status()
     except requests.exceptions.HTTPError:
+        logging.error(f"HTTP Error when attempting to get_response from {url}")
         return None
     return response.json()
 
