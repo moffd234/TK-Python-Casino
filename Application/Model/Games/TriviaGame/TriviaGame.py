@@ -94,6 +94,12 @@ def get_response(url: str) -> None | dict:
 
 
 def get_possible_categories() -> list[Category] | None:
+    """
+    Retrieves a list of trivia categories from cache if available and valid,
+    or from the OpenTDB API otherwise. Caches the result for future use.
+
+    :return: A list of Category objects if successful, or None if the API call fails.
+    """
     cached_categories: dict | None = cache_loader()
 
     if cached_categories:
