@@ -79,6 +79,12 @@ def parse_cached_categories(cache) -> list[Category]:
 
 
 def get_response(url: str) -> None | dict:
+    """
+    Sends an HTTP GET request to the provided URL and returns the parsed JSON response.
+
+    :param url: The API endpoint to query.
+    :return: A dictionary containing the JSON response if successful, or None if the request fails.
+    """
     response = requests.get(url)
     try:
         response.raise_for_status()
