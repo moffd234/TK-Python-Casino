@@ -77,9 +77,9 @@ def parse_cached_categories(cache) -> list[Category]:
 
 class TriviaGame:
 
-    def __init__(self):
-        self.q_type: str = ""
-        self.difficulty: str = ""
-        self.cat: Category | None = None
+    def __init__(self, q_type: str, difficulty: str, cat: Category):
+        self.q_type: str = q_type
+        self.difficulty: str = difficulty
+        self.cat: Category = cat
         self.base_url = "https://opentdb.com/"
         self.score = 0
