@@ -1,4 +1,5 @@
 import json
+import logging
 import os
 from datetime import datetime, timedelta
 from html import unescape
@@ -108,6 +109,7 @@ def get_possible_categories() -> list[Category] | None:
     cat_response = get_response(f"{BASE_URL}api_category.php")
 
     if cat_response is None:
+        logging.error("Unable to get any response from Trivia Game's Category API")
         return None
 
     all_categories: dict = {category["name"]: category["id"] for category in cat_response["trivia_categories"]}
