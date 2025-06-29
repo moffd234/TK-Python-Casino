@@ -27,7 +27,7 @@ def create_questions(q_response: dict) -> list[Question]:
 
 def category_cacher(categories: list[Category]) -> None:
     """
-    Caches a list of trivia categories along with a timestamp to the chache file.
+    Caches a list of trivia categories along with a timestamp to the cache file.
 
     :param categories: List of Category objects to cache.
     :return: None
@@ -78,4 +78,8 @@ def parse_cached_categories(cache) -> list[Category]:
 class TriviaGame:
 
     def __init__(self):
-        pass
+        self.q_type: str = ""
+        self.difficulty: str = ""
+        self.cat: Category | None = None
+        self.base_url = "https://opentdb.com/"
+        self.score = 0
