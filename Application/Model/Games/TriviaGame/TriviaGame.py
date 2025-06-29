@@ -1,5 +1,6 @@
 import json
-from datetime import datetime
+import os
+from datetime import datetime, timedelta
 from html import unescape
 
 from Application.Model.Games.TriviaGame.Category import Category
@@ -36,6 +37,23 @@ def category_cacher(categories: list[Category]) -> None:
 
     with open(CACHE_FILE_PATH, mode='w') as cache_file:
         json.dump(cache, cache_file, indent=4)
+
+
+def cache_loader() -> dict | None:
+    """
+    Loads cached trivia categories from a local file if the cache is valid (less than 24 hours old).
+
+    :return: Dictionary of cached categories or None if cache is expired or missing.
+    """
+    if os.path.exists(CACHE_FILE_PATH):
+        with open(CACHE_FILE_PATH, mode='r') as cache_file:
+            cache = json.load(cache_file)
+
+            cache_date = datetime.strptime(cache["timestamp"], "%Y-%m-%d %H:%M:%S")
+            if datetime.now() - cache_date < timedelta(hours=24):
+                return cache["categories"]
+
+    return None
 
 
 class TriviaGame:
