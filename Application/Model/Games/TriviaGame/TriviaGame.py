@@ -57,6 +57,12 @@ def cache_loader() -> dict | None:
 
 
 def parse_cached_categories(cache) -> list[Category]:
+    """
+    Converts cached dictionary data into a list of Category objects.
+
+    :param cache: Cached category data loaded from file.
+    :return: List of Category objects.
+    """
     possible_categories: list[Category] = []
     for category in cache:
         possible_categories.append(Category(
