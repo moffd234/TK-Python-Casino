@@ -25,6 +25,12 @@ def create_questions(q_response: dict) -> list[Question]:
 
 
 def category_cacher(categories: list[Category]) -> None:
+    """
+    Caches a list of trivia categories along with a timestamp to the chache file.
+
+    :param categories: List of Category objects to cache.
+    :return: None
+    """
     cache: dict = {"timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                    "categories": [cat.__dict__ for cat in categories]}
 
