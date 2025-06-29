@@ -87,6 +87,36 @@ def get_response(url: str) -> None | dict:
     return response.json()
 
 
+def get_possible_categories() -> list[Category] | None:
+    cached_categories: dict | None = cache_loader()
+
+    if cached_categories:
+        return parse_cached_categories(cached_categories)
+
+    cat_response = get_response(f"{BASE_URL}api_category.php")
+
+    if cat_response is None:
+        return None
+
+    all_categories: dict = {category["name"]: category["id"] for category in cat_response["trivia_categories"]}
+    possible_categories: list[Category] = []
+
+    for key, value in all_categories.items():
+        response = get_response(f"{BASE_URL}api_count.php?category={value}")
+
+        if response:
+            category_data = response.get("category_question_count", {})
+            possible_categories.append(Category(
+                name=key,
+                id_num=value,
+                easy_num=category_data.get("total_easy_question_count", 0),
+                med_num=category_data.get("total_medium_question_count", 0),
+                hard_num=category_data.get("total_hard_question_count", 0)
+            ))
+
+    category_cacher(possible_categories)
+    return possible_categories
+
 
 class TriviaGame:
 
