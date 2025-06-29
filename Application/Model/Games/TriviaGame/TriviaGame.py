@@ -3,10 +3,13 @@ import os
 from datetime import datetime, timedelta
 from html import unescape
 
+import requests
+
 from Application.Model.Games.TriviaGame.Category import Category
 from Application.Model.Games.TriviaGame.Question import Question
 
 CACHE_FILE_PATH = "category_cache.txt"
+BASE_URL: str = "https://opentdb.com/"
 
 
 def create_questions(q_response: dict) -> list[Question]:
@@ -75,11 +78,20 @@ def parse_cached_categories(cache) -> list[Category]:
     return possible_categories
 
 
+def get_response(url: str) -> None | dict:
+    response = requests.get(url)
+    try:
+        response.raise_for_status()
+    except requests.exceptions.HTTPError:
+        return None
+    return response.json()
+
+
+
 class TriviaGame:
 
     def __init__(self, q_type: str, difficulty: str, cat: Category):
         self.q_type: str = q_type
         self.difficulty: str = difficulty
         self.cat: Category = cat
-        self.base_url = "https://opentdb.com/"
         self.score = 0
