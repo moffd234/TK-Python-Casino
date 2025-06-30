@@ -13,22 +13,6 @@ CACHE_FILE_PATH = "category_cache.txt"
 BASE_URL: str = "https://opentdb.com/"
 
 
-def create_questions(q_response: dict) -> list[Question]:
-    """
-    Parses a JSON response from the trivia API and constructs a list of Question objects.
-
-    :param q_response: JSON dictionary containing trivia questions.
-    :return: A list of Question objects.
-    """
-    questions_list: list[Question] = []
-    for question in q_response["results"]:
-        questions_list.append(Question(question=unescape(question["question"]),
-                                       answer=unescape(question["correct_answer"]),
-                                       wrong_answers=[unescape(answer) for answer in question["incorrect_answers"]]
-                                       ))
-    return questions_list
-
-
 def category_cacher(categories: list[Category]) -> None:
     """
     Caches a list of trivia categories along with a timestamp to the cache file.
@@ -95,44 +79,6 @@ def get_response(url: str) -> None | dict:
     return response.json()
 
 
-def get_possible_categories() -> list[Category] | None:
-    """
-    Retrieves a list of trivia categories from cache if available and valid,
-    or from the OpenTDB API otherwise. Caches the result for future use.
-
-    :return: A list of Category objects if successful, or None if the API call fails.
-    """
-    cached_categories: dict | None = cache_loader()
-
-    if cached_categories:
-        return parse_cached_categories(cached_categories)
-
-    cat_response = get_response(f"{BASE_URL}api_category.php")
-
-    if cat_response is None:
-        logging.error("Unable to get any response from Trivia Game's Category API")
-        return None
-
-    all_categories: dict = {category["name"]: category["id"] for category in cat_response["trivia_categories"]}
-    possible_categories: list[Category] = []
-
-    for key, value in all_categories.items():
-        response = get_response(f"{BASE_URL}api_count.php?category={value}")
-
-        if response:
-            category_data = response.get("category_question_count", {})
-            possible_categories.append(Category(
-                name=key,
-                id_num=value,
-                easy_num=category_data.get("total_easy_question_count", 0),
-                med_num=category_data.get("total_medium_question_count", 0),
-                hard_num=category_data.get("total_hard_question_count", 0)
-            ))
-
-    category_cacher(possible_categories)
-    return possible_categories
-
-
 class TriviaGame:
 
     def __init__(self, q_type: str, difficulty: str, cat: Category):
@@ -140,3 +86,57 @@ class TriviaGame:
         self.difficulty: str = difficulty
         self.cat: Category = cat
         self.score = 0
+
+    @staticmethod
+    def get_possible_categories() -> list[Category] | None:
+        """
+        Retrieves a list of trivia categories from cache if available and valid,
+        or from the OpenTDB API otherwise. Caches the result for future use.
+
+        :return: A list of Category objects if successful, or None if the API call fails.
+        """
+        cached_categories: dict | None = cache_loader()
+
+        if cached_categories:
+            return parse_cached_categories(cached_categories)
+
+        cat_response = get_response(f"{BASE_URL}api_category.php")
+
+        if cat_response is None:
+            logging.error("Unable to get any response from Trivia Game's Category API")
+            return None
+
+        all_categories: dict = {category["name"]: category["id"] for category in cat_response["trivia_categories"]}
+        possible_categories: list[Category] = []
+
+        for key, value in all_categories.items():
+            response = get_response(f"{BASE_URL}api_count.php?category={value}")
+
+            if response:
+                category_data = response.get("category_question_count", {})
+                possible_categories.append(Category(
+                    name=key,
+                    id_num=value,
+                    easy_num=category_data.get("total_easy_question_count", 0),
+                    med_num=category_data.get("total_medium_question_count", 0),
+                    hard_num=category_data.get("total_hard_question_count", 0)
+                ))
+
+        category_cacher(possible_categories)
+        return possible_categories
+
+    @staticmethod
+    def create_questions(q_response: dict) -> list[Question]:
+        """
+        Parses a JSON response from the trivia API and constructs a list of Question objects.
+
+        :param q_response: JSON dictionary containing trivia questions.
+        :return: A list of Question objects.
+        """
+        questions_list: list[Question] = []
+        for question in q_response["results"]:
+            questions_list.append(Question(question=unescape(question["question"]),
+                                           answer=unescape(question["correct_answer"]),
+                                           wrong_answers=[unescape(answer) for answer in question["incorrect_answers"]]
+                                           ))
+        return questions_list
