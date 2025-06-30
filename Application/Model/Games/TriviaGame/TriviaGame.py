@@ -183,3 +183,15 @@ class TriviaGame:
             return True
 
         return False
+
+    def get_winnings_total(self, wager: float) -> float:
+        """
+        Calculates the user's total winnings based on the selected question type,
+        difficulty level, and wager amount.
+
+        :param wager: The amount of money wagered by the user.
+        :return: The calculated winnings, rounded to two decimal places.
+        """
+        multipliers = {"easy": 1.25, "medium": 1.5, "hard": 1.75, "boolean": 1, "multiple": 1.25}
+        multiplier = multipliers[self.difficulty] * multipliers[self.q_type]
+        return round(wager * multiplier, 2)
