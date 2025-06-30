@@ -140,3 +140,31 @@ class TriviaGame:
                                            wrong_answers=[unescape(answer) for answer in question["incorrect_answers"]]
                                            ))
         return questions_list
+
+    def get_valid_categories(self, difficulty: str) -> list[Category]:
+        """
+
+        Iterates through list of Categories and returns a list of only the categories that are valid
+
+        :param difficulty: the chosen difficulty of the questions
+        :return: a list of valid categories to use
+
+        Currently, the only way to check a category's question count is the get the count of all questions. However,
+        this does not specify how many of those questions are true/false and how many are multiple choice. Thus,
+        we must iterate through all the possible categories and see if it has 50+ questions for a given difficulty at
+        which point we can assume it has 10+ for both true/false and multiple choice
+        """
+        categories: list[Category] = self.get_possible_categories()
+        valid_categories: list[Category] = []
+
+        for cat in categories:
+            if difficulty == "easy" and cat.easy_num >= 50:
+                valid_categories.append(cat)
+
+            elif difficulty == "medium" and cat.med_num >= 50:
+                valid_categories.append(cat)
+
+            elif difficulty == "hard" and cat.hard_num >= 50:
+                valid_categories.append(cat)
+
+        return valid_categories
