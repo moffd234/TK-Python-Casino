@@ -168,3 +168,18 @@ class TriviaGame:
                 valid_categories.append(cat)
 
         return valid_categories
+
+    def check_answer(self, answer: str, question: Question) -> bool:
+        """
+        Compares the user's answer to the correct answer for a given question.
+        Increments the score if the answer is correct.
+
+        :param answer: The user's submitted answer.
+        :param question: The Question object containing the correct answer.
+        :return: True if the user's answer is correct; False otherwise.
+        """
+        if answer.lower().strip() == question.answer.lower().strip():
+            self.score += 1
+            return True
+
+        return False
