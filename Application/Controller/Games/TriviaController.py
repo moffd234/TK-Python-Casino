@@ -9,12 +9,14 @@ class TriviaController:
         self.account_controller: AccountController = account_controller
         self.game: TriviaGame | None = None
 
-    def start_game(self, q_type: str, diff: str, cat: Category) -> None:
+    def start_game(self, q_type: str, diff: str) -> list[Category]:
         """
-        Initializes a new TriviaGame instance with the given parameters.
+        Initializes a new TriviaGame instance with the given question type and difficulty,
+        then returns a list of valid trivia categories based on the selected difficulty.
 
         :param q_type: Question type ("boolean" or "multiple").
-        :param diff: Difficulty level ("easy", "medium", "hard").
-        :param cat: Selected Category instance.
+        :param diff: Difficulty level ("easy", "medium", or "hard").
+        :return: A list of Category objects that are valid for the selected difficulty.
         """
         self.game = TriviaGame(q_type, diff)
+        return self.game.get_valid_categories(self.game.difficulty)
