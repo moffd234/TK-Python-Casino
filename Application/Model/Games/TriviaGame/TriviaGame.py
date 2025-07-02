@@ -81,10 +81,10 @@ def get_response(url: str) -> None | dict:
 
 class TriviaGame:
 
-    def __init__(self, q_type: str, difficulty: str, cat: Category):
+    def __init__(self, q_type: str, difficulty: str):
         self.q_type: str = q_type
         self.difficulty: str = difficulty
-        self.cat: Category = cat
+        self.cat: Category | None = None
         self.score = 0
 
     @staticmethod

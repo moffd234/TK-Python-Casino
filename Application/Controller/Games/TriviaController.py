@@ -17,4 +17,4 @@ class TriviaController:
         :param diff: Difficulty level ("easy", "medium", "hard").
         :param cat: Selected Category instance.
         """
-        self.game = TriviaGame(q_type, diff, cat)
+        self.game = TriviaGame(q_type, diff)
