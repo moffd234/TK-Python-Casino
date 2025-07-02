@@ -141,6 +141,18 @@ class TriviaGame:
                                            ))
         return questions_list
 
+    def get_question_response(self) -> dict | None:
+        """
+        Builds and sends a request to the OpenTDB API to retrieve 10 trivia questions
+        based on the configured category, difficulty, and question type.
+
+        :return: A dictionary containing the API response with trivia questions, or None if the request fails.
+        """
+        url: str = (f"{BASE_URL}api.php?amount=10&category={self.cat.id}"
+                    f"&difficulty={self.difficulty}&type={self.q_type}")
+
+        return get_response(url)
+
     def get_valid_categories(self, difficulty: str) -> list[Category]:
         """
 
