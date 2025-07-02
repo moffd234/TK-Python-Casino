@@ -9,7 +9,7 @@ class TriviaController:
         self.account_controller: AccountController = account_controller
         self.game: TriviaGame | None = None
 
-    def start_game(self, q_type: str, diff: str) -> list[Category]:
+    def setup_game(self, q_type: str, diff: str) -> list[Category]:
         """
         Initializes a new TriviaGame instance with the given question type and difficulty,
         then returns a list of valid trivia categories based on the selected difficulty.
