@@ -125,16 +125,20 @@ class TriviaGame:
         category_cacher(possible_categories)
         return possible_categories
 
-    @staticmethod
-    def create_questions(q_response: dict) -> list[Question]:
+    def create_questions(self) -> list[Question] | None:
         """
         Parses a JSON response from the trivia API and constructs a list of Question objects.
 
-        :param q_response: JSON dictionary containing trivia questions.
         :return: A list of Question objects.
         """
+        response: dict | None = self.get_question_response()
+
+        if not response:
+            logging.error(f"Issue getting questions for difficulty: {self.difficulty}, and category: {self.cat}")
+            return None
+
         questions_list: list[Question] = []
-        for question in q_response["results"]:
+        for question in response["results"]:
             questions_list.append(Question(question=unescape(question["question"]),
                                            answer=unescape(question["correct_answer"]),
                                            wrong_answers=[unescape(answer) for answer in question["incorrect_answers"]]
