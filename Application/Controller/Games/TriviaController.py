@@ -1,5 +1,6 @@
 from Application.Controller.AccountController import AccountController
 from Application.Model.Games.TriviaGame.Category import Category
+from Application.Model.Games.TriviaGame.Question import Question
 from Application.Model.Games.TriviaGame.TriviaGame import TriviaGame
 
 
@@ -8,6 +9,7 @@ class TriviaController:
     def __init__(self, account_controller: AccountController):
         self.account_controller: AccountController = account_controller
         self.game: TriviaGame | None = None
+        self.question_list: list[Question] | None = None
 
     def setup_game(self, q_type: str, diff: str) -> list[Category]:
         """
@@ -20,3 +22,18 @@ class TriviaController:
         """
         self.game = TriviaGame(q_type, diff)
         return self.game.get_valid_categories(self.game.difficulty)
+
+    def get_question_list(self, cat: Category) -> list[Question] | None:
+        """
+        Sets the selected trivia category on the current game instance and retrieves a list of questions.
+
+        :param cat: The Category object selected by the user.
+        :return: A list of Question objects if retrieval is successful; otherwise, None.
+        """
+        self.game.set_category(cat)
+        self.question_list = self.game.create_questions()
+
+        if self.question_list:
+            return self.question_list
+
+        return None
