@@ -215,3 +215,12 @@ class TriviaGame:
         multipliers = {"easy": 1.25, "medium": 1.5, "hard": 1.75, "boolean": 1, "multiple": 1.25}
         multiplier = multipliers[self.difficulty] * multipliers[self.q_type]
         return round(wager * multiplier, 2)
+
+    def set_category(self, cat: Category) -> None:
+        """
+        Sets the trivia category for the current game session.
+
+        :param cat: A Category object representing the selected trivia category.
+        :return: None
+        """
+        self.cat = cat
