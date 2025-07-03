@@ -127,14 +127,18 @@ class TriviaGame:
 
     def create_questions(self) -> list[Question] | None:
         """
-        Parses a JSON response from the trivia API and constructs a list of Question objects.
+        Sends a request to the trivia API using the configured difficulty, category, and question type,
+        and parses the response into a list of Question objects.
 
-        :return: A list of Question objects.
+        Logs an error and returns None if the API response is invalid or missing.
+
+        :return: A list of Question objects if the API call is successful; otherwise, None.
         """
         response: dict | None = self.get_question_response()
 
         if not response:
-            logging.error(f"Issue getting questions for difficulty: {self.difficulty}, and category: {self.cat}")
+            logging.error(f"Issue getting questions for difficulty: {self.difficulty},"
+                          f"type: {self.q_type}, and category: {self.cat}")
             return None
 
         questions_list: list[Question] = []
