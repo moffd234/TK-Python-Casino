@@ -50,4 +50,4 @@ class TriviaController:
         :return: True if the answer is correct, False otherwise.
         """
         self.question_num += 1
-        return self.game.check_answer(answer, self.question_list[self.question_num])
+        return self.game.check_answer(answer, self.question_list[self.question_num - 1])
