@@ -10,6 +10,7 @@ class TriviaController:
         self.account_controller: AccountController = account_controller
         self.game: TriviaGame | None = None
         self.question_list: list[Question] | None = None
+        self.question_num: int = 0
 
     def setup_game(self, q_type: str, diff: str) -> list[Category]:
         """
@@ -37,3 +38,16 @@ class TriviaController:
             return self.question_list
 
         return None
+
+    def check_answer(self, answer: str) -> bool:
+        """
+        Checks whether the provided answer is correct for the current question.
+
+        Delegates to the TriviaGame's check_answer method and compares the user's input
+        against the correct answer for the current question in the question list.
+
+        :param answer: The user's answer to the current trivia question.
+        :return: True if the answer is correct, False otherwise.
+        """
+        self.question_num += 1
+        return self.game.check_answer(answer, self.question_list[self.question_num])
